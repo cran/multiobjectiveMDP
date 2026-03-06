@@ -1,0 +1,241 @@
+---
+title: "Introduction to multiobjectiveMDP"
+bibliography: bibliography.bib
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to multiobjectiveMDP}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(multiobjectiveMDP)
+```
+
+The raison d'être of multiobjectiveMDP is to draw together computational methods for analyzing and solving multi-objective Markov decision processes (MMDPs), a class of quantitative models of sequential decision making in dynamic environments where conflicting or incommensurate criteria enter simultaneously into the assessment and comparison of policy alternatives. The package currently features
+
+* vector-valued dynamic programming, as presented in @white1982multi and subsequently rectified in @mifrani2025counterexample, for finite-horizon problems; 
+* vector-valued policy iteration, as developed in @wakuta1995vector, for discounted infinite-horizon problems;
+* the multi-objective linear programming approach described in @mifrani2025linear for finite-horizon problems and its extension to the discounted infinite-horizon case; and
+* the weighting factor approach, which originated in early developments in multi-objective optimization, applied to both finite- and infinite-horizon problems.
+
+As a byproduct of these implementations, multiobjectiveMDP can also be employed to solve standard Markov decision process (MDP) models, through backward induction for finite-horizon problems, policy iteration for discounted infinite-horizon ones, and linear programming for both.
+
+In the finite-horizon case, multiobjectiveMDP allows for time heterogeneity both in the dynamics of the problem and its reward structure. In this respect it differs markedly from MDPtoolbox and pomdp, which treat only stationary (single-objective) problems.
+
+The content of multiobjectiveMDP is described in detail in the package documentation. This vignette centers on background and basic functionality. Some of the material presented below was culled from this author's doctoral dissertation, an electronic version of which is freely accessible on [the Web](https://theses.hal.science/tel-05266740v1).
+
+## Multi-objective Markov decision processes
+
+It is a commonplace that the decision maker who is unduly concerned with immediate outcomes might not achieve satisfactory overall performance. An accurate appraisal of the future consequences of a course of action becomes all the more imperative, and difficult, in an environment of risk and uncertainty. Fortunately, for all the complexities of the real world, a decision-making problem can often be described adequately in quantitative terms: its dynamics can be expressed mathematically, and the criterion or set of criteria by which performance is judged can be evaluated numerically. The net result is an optimization or control model to which the techniques of operations research can be applied, provided the model is tractable.    
+
+One commonly used model for decision making under uncertainty is the Markov decision process. The model is organized into uniform time points, called *decision epochs*, at which the environment subject to control occupies a *state*. In each state, a set of alternative *actions* are available for the decision maker to choose from. When an action is chosen, a real-valued *reward* is incurred, and the state at the following epoch is given by a probability distribution determined by the current state, the particular action and possibly the epoch. To decide what action to take in the light of what is known about the system at a given time, a *policy* is required. The objective of an MDP analysis is to determine policies that produce optimal performance with respect to the reward sequence. Depending on the application, we might, to cite the most common examples, seek policies that maximize the expected total reward over a finite period, or the expected discounted total reward over a long or infinite period, or the expected reward per unit time. (In a broad-gauge review, @white1988mean samples a number of other interesting, less standard formulations.)
+
+The sheer simplicity of MDPs has generated a rich and highly ramified mathematical theory, and with it a wealth of algorithms for the determination or approximation of optimal policies. Yet from a practitioner's point of view, the use of a single reward function might prove insufficient to characterize problems where a variety of desiderata enter into the assessment of a state or a decision. Indeed, a survey commissioned by the operations research publication *Interfaces* found that one of the chief impediments to the successful real-world application of MDP models has been the "multi-objective nature of problems". 
+
+It is therefore not surprising that a strong research interest began to crystallize in the 1980s around MDPs using multiple reward functions. Such processes are variously termed multi-objective or vector-valued. The elements of, and sequence of events in, an MMDP are those described in the single-objective case, except that actions generate multiple rewards in the form of a vector. The components of this vector define marginal reward functions expressing each a particular decision-making criterion. Associated with each criterion is a function of the relevant marginal reward sequence which tells us how well we did with respect to that criterion. The collection of these functions constitutes the vector-valued function by which we judge a policy's overall performance. Before turning to specific definitions and how they are implemented in the package, some notation is in order. First of all, let
+
+* $T = \{1, \dots, H\}$ denote the set of decision epochs, $H$ being finite or infinite;  
+* $S = \{1, \dots, N\}$ denote the state set; and
+* $A_s = \{1, \dots, k_s\}$ denote the actions permissible in state $s$.
+
+multiobjectiveMDP assumes finite states and actions, but some of the theory on which it rests carries over to more abstract model formulations. We call $H$ the *horizon*.
+
+### Transition probabilities and rewards
+
+In a *finite-horizon problem*, decisions are made sequentially at each of the epochs 1 through $H-1$. For each $t \in T \setminus \{H\}$, we shall write
+
+* $p_t(j | s_t, a_t)$ to refer to the probability of transition from state $s_t$ to state $j$ under action $a_t \in A_s$ given that the action is taken at time $t$; and
+* $R_t(s_t, a_t) = (r_{t, 1}(s_t, a_t), \dots, r_{t, k}(s_t, a_t))$ to designate the reward vector for selecting action $a_t$ in state $s_t$ at time $t$, where $r_{t, i}(s_t, a_t)$ is the reward associated with the $i$th objective.
+
+While it is customary to preclude action selection at epoch $H$, a terminal reward $R_H(s_H) = (r_{H, 1}(s_H), \dots, r_{H, k}(s_H))$ is nonetheless accrued as a function of the final system state $s_H$.
+
+*Infinite-horizon problems*, on the other hand, assume stationary (i.e., time-homogeneous) transition probabilities $p(j | s, a)$ and rewards $R(s, a) = (r_1(s, a), \dots, r_k(s, a))$ with no prospect of termination.
+
+In multiobjectiveMDP, we require transition probabilities and rewards to be stored in lists of a certain standardized form. To get a flavor of this template, we will ask `generate_rand_MMDP()` to produce a two-state bi-objective model with two actions per state, first in a finite-horizon situation then in an infinite-horizon one. 
+
+```{r}
+set.seed(1234)
+no_states <- 2
+action_sets <- list(c(1, 2), c(1, 2))
+no_objectives <- 2
+# Generate a two-state bi-objective MDP having three epochs and two actions per state
+finite_horizon_MMDP <- generate_rand_MMDP(no_states, action_sets, horizon = 3, no_objectives)
+# Inspect the transition probabilities
+P <- finite_horizon_MMDP$P
+P
+
+# Inspect the rewards
+R <- finite_horizon_MMDP$R
+R
+```
+
+We see that `P` breaks down into two lists, one per decision epoch, such that each `P[[t]]` has the size of the state set. Under `P[[t]][[s]]` we find two numeric vectors: `P[[t]][[s]][[1]]`, which gives the transition probability distribution $p_t(.|s, 1)$ under state $s$ and action $1$, and `P[[t]][[s]][[2]]`, which gives the analogous distribution under action $2$. The components of `P[[t]][[s]][[a]]` sum to 1.0.
+
+The reward list `R` comprises three lists, two for the non-terminal epochs and one for the terminal epoch, with `R[[t]]` containing as many components as there are states. For non-terminal $t$, `R[[t]][[s]]` is itself a list of two vectors: `R[[t]][[s]][[1]]`, the reward vector $R_t(s, 1)$ for selecting action $1$ in state $s$ at time $t$, and `R[[t]][[s]][[2]]`, the reward vector $R_t(s, 2)$ for selecting action $2$. The terminal rewards $R_H(s)$ are stored in the vectors `R[[horizon]][[s]]`. 
+
+Let us now examine an infinite-horizon counterpart to this problem. 
+
+```{r}
+set.seed(1234)
+no_states <- 2
+action_sets <- list(c(1, 2), c(1, 2))
+no_objectives <- 2
+# Generate an infinite-horizon two-state bi-objective MDP having two actions per state
+stationary_MMDP <- generate_rand_MMDP(no_states, action_sets, horizon = Inf, no_objectives)
+
+# Inspect the transition probabilities
+P <- stationary_MMDP$P
+P
+
+# Inspect the rewards
+R <- stationary_MMDP$R
+R
+```
+
+These lists bear a similar but much simpler structure due to the stationarity of infinite-horizon MMDPs. Both are of length one, with `P[[1]]` and `R[[1]]` breaking down into one list per state. Under `P[[1]][[s]]` we find the vectors `P[[1]][[s]][[1]]` and `P[[1]][[s]][[2]]`, which define the stationary transition probability distributions $p(. | s, 1)$ and $p(. | s, 2)$ for a fixed state $s$. The vectors `R[[1]][[s]][[1]]` and `R[[1]][[s]][[2]]` specify the rewards $R(s, 1)$ and $R(s, 2)$.
+
+multiobjectiveMDP supplies functions that help ascertain if a list constitutes an acceptable transition probability or reward list for a finite- or infinite-horizon MMDP. These are the functions prefixed by `are_valid_`.  
+
+### Decision rules and policies
+
+Whether the horizon is finite or infinite, we assume that the decision maker is always permitted exact observation of the state of the system before determining an appropriate action. *Decision rules* generally connote prescriptions for action selection viewed as mappings from states to actions. Such rules are called *Markov* because they depend only on the state in which the action is executed and *deterministic* because they specify actions with certainty ^[The dynamic programming procedure of `solve_finite_horizon_MMDP_backward_induction()` compels consideration of certain non-Markov decision rules as well. To make this possible, we need to redefine rules as follows. If $h_t = (s_1, \dots, s_t)$ designates a sequence of states observed prior to and including epoch $t$, then we construe a rule to mean a mapping of each such sequence to some action permissible in state $s_t$. If the mapping ignores past states, we get a Markov deterministic rule.].
+
+A policy is a sequence of decision rules dictating the rule to be used at each epoch. We might think of a policy as a sequence $\pi = (d_1, \dots, d_{H-1})$ or $\pi = (d_1, d_2, \dots)$, the latter form being appropriate for infinite-horizon problems, where $d_t$ is the rule to apply at epoch $t$. A policy is *stationary* if it uniformly recommends the same rule, and a stationary policy is said to be *pure* if the rule it prescribes is Markov deterministic. Pure policies figure prominently in the study of infinite-horizon MMDPs.          
+
+In multiobjectiveMDP, finite-horizon (Markov deterministic) policies are encoded in integer matrices where the $(s, t)$-th entry gives the action $d_t(s)$ recommended for state $s$ at time $t$. Consider the following example from a two-state, five-period model that provides two actions for state $1$ and three for state $2$.
+
+```{r}
+set.seed(1234)
+no_states <- 2
+# The action set for state 1 is {1, 2}; for state 2 it is {1, 2, 3}
+action_sets <- list(c(1, 2), c(1, 2, 3))
+horizon <- 5
+policy <- matrix(data = c(sample(action_sets[[1]], size = horizon-1, replace = T), sample(action_sets[[2]], size = horizon-1, replace = T)), nrow = no_states, ncol = horizon-1)
+policy
+```
+
+Each of the four columns of `policy` describes the decision rule to apply at the corresponding epoch. For instance, if the system occupies state $1$ at epoch $3$, column three says we must take action $1$. If state $2$ is observed instead, the same column dictates action $3$. (Note that, consistent with our definition of an action set, an entry in `policy` ought to be interpreted as the *position* of an action in the relevant action set. In particular, the two $2$'s under column one do not necessarily denote the same action: the top $2$ refers to the *second action available* in state $1$, whereas the bottom $2$ refers to the second action available in state $2$.)        
+
+Because they are stationary, pure policies can simply be encoded in vectors recording the action prescribed for each state. For example, the code below shows the construction of a pure policy that prescribes action $2$ for state $1$ and action $2$ for state $2$.
+
+```{r}
+set.seed(1234)
+no_states <- 2
+# The action set for state 1 is {1, 2}; for state 2 it is {1, 2, 3}
+action_sets <- list(c(1, 2), c(1, 2, 3))
+policy <- c(sample(action_sets[[1]], size = 1), sample(action_sets[[2]], size = 1))
+policy
+```
+
+The helper functions `is_valid_finite_horizon_policy()` and `is_valid_infinite_horizon_policy()` assess matrices and vectors for suitability as policy representations. They take the reward list of the model under study (from which the states, the actions and the horizon are inferred) and determine if the matrix/vector passed comports with the model.  
+
+### Value functions and preference patterns
+
+Given multiple policy alternatives, we will wish to assess their relative merits and deficiencies in order that we may select a satisfactory policy for implementation. This presupposes a method of evaluating policies. A natural way of viewing the performance of a policy is through the sum of rewards that accumulate during the lifetime of the process as a result of implementing the policy. Because of the inherent uncertainty in the dynamics of an MMDP (and possibly in the policy itself, if we allowed action randomization), we cannot know these rewards ahead of implementation, and so we must treat them as random variables. Let $\pi$ denote some Markov deterministic policy, limiting ourselves for the moment to finite-horizon situations. The *expected total reward* that accrues under $\pi$ if the system initially occupies state $s$ can be defined as $$ v_H^{\pi}(s) = \mathbb{E}_{s}^{\pi}\Biggl[\sum_{t = 1}^{H-1}R_t(S_t, d_t(S_t)) + R_H(S_H)\Biggr], $$  
+where $S_t$ denotes the random state at time $t = 1, \dots, H$, $d_t(S_t)$ the action prescribed for state $S_t$, and $\mathbb{E}_{s}^{\pi}[W]$ the vector of expectations, with respect to the probability distribution of system state-action trajectories under $\pi$, of the components of a vector-valued random variable $W$, conditional on $S_1 = s$.
+
+We might also wish to account for the time value of rewards, in which case a *discount factor* $\rho$, ranging in $(0, 1)$, would be appropriate. We would then evaluate the *expected discounted total reward* for using policy $\pi$ from an initial state $s$ as
+
+$$ v_{H, \rho}^{\pi}(s) = \mathbb{E}_{s}^{\pi}\Biggl[\sum_{t = 1}^{H-1}\rho^{t-1}R_t(S_t, d_t(S_t)) + \rho^{H-1}R_H(S_H)\Biggr]. $$ 
+multiobjectiveMDP offers in `evaluate_finite_horizon_MMDP_markov_policy()` a recursive method for calculating $v_{H}^{\pi}(s)$ and $v_{H, \rho}^{\pi}(s)$ for all states $s$. An example of its use follows.
+
+```{r}
+set.seed(1234)
+no_states <- 2
+action_sets <- list(c(1, 2), c(1, 2, 3))
+horizon <- 5
+no_objectives <- 2
+# Generate a two-state bi-objective MDP with the specified action sets and horizon
+MMDP <- generate_rand_MMDP(no_states, action_sets, horizon, no_objectives)
+transition_probabilities <- MMDP$P
+rewards <- MMDP$R
+
+policy <- matrix(data = c(sample(action_sets[[1]], size = horizon-1, replace = T),
+                          sample(action_sets[[2]], size = horizon-1, replace = T)),
+                 nrow = no_states, ncol = horizon-1)
+policy
+
+# Evaluate the expected total reward of policy over the five epochs
+evaluate_finite_horizon_MMDP_markov_policy(transition_probabilities, rewards, policy)
+
+# What if a discount factor of 70% is applied at each epoch? 
+rho <- .7
+evaluate_finite_horizon_MMDP_markov_policy(transition_probabilities, rewards, policy, rho)
+
+```
+
+
+When the horizon is infinite, discounting plays a useful mathematical role in that it ensures that the expected discounted total reward of a policy $\pi$,
+$$ v_{\rho}^{\pi}(s) = \mathbb{E}_{s}^{\pi}\Biggl[\sum_{t = 1}^{\infty}\rho^{t-1}R(S_t, d_t(S_t))\Biggr], $$ 
+is finite whatever the starting state $s$. The package function `evaluate_discounted_MMDP_pure_policy()` serves to evaluate pure policies in infinite-horizon problems.
+
+```{r}
+set.seed(1234)
+no_states <- 2
+action_sets <- list(c(1, 2), c(1, 2))
+no_objectives <- 2
+# Generate an infinite-horizon two-state bi-objective MDP providing two actions per state
+stationary_MMDP <- generate_rand_MMDP(no_states, action_sets, horizon = Inf, no_objectives)
+# Consider the pure policy that recommends action 2 for state 1 and action 1 for state 2
+policy <- c(2, 1)
+# Evaluate the policy in the infinite-horizon model generated above for rho = .7
+evaluate_discounted_MMDP_pure_policy(stationary_MMDP$P, stationary_MMDP$R, policy, rho = .7)
+
+
+```
+
+Finally, applications abound where the state of the system at the beginning of the decision making period is subject to uncertainty, and we may wish to assess a policy against a distribution of initial states rather than a single initial state. If $\alpha(s)$ denotes the probability that the process will occupy a state $s$ at the first decision epoch, then *the expected total reward of a policy $\pi$ under the initial-state distribution $\alpha$* is
+
+$$\sum_{s = 1}^{N}\alpha(s)v_{H}^{\pi}(s) = \sum_{s = 1}^{N}\alpha(s)\mathbb{E}_{s}^{\pi}\Biggl[\sum_{t = 1}^{H-1}R_t(S_t, d_t(S_t)) + R_H(S_H)\Biggr]$$
+if the horizon is finite, and
+
+$$\sum_{s = 1}^{N}\alpha(s)v_{\rho}^{\pi}(s) = \sum_{s = 1}^{N}\alpha(s)\mathbb{E}_{s}^{\pi}\Biggl[\sum_{t = 1}^{\infty}\rho^{t-1}R(S_t, d_t(S_t))\Biggr]$$
+if decisions are made over an infinity of epochs.
+
+To be able to compare policies on the basis of expected (discounted) total rewards, we must assume a preference pattern on the part of the decision maker, viz. a set of rules for comparing value vectors. The pattern implicit in multiobjectiveMDP is a maximization pattern in which larger values in each objective are preferable to smaller values. Thus, if $x$ and $y$ represent $k$-dimensional value vectors (e.g., expected total rewards over a finite horizon) achieved by two competing policies $\pi$ and $\pi'$, we would deem $\pi$ to be at least as good as $\pi'$ if $x_i \geq y_i$ for each $i = 1, \dots, k$, and we would correspondingly prefer $\pi$ to $\pi'$ if, in addition to these inequalities holding, at least one objective $i$ satisfied $x_i > y_i$. If neither policy is at least as good as the other, we would say $\pi$ and $\pi'$ are incomparable.
+
+From this discussion it follows that the decision maker's choice of policy ought to be an *efficient* (or Pareto optimal, or admissible) one, meaning a policy in which an increase in value of any objective cannot be achieved without a corresponding decrease in the value of at least one other objective. When we rely upon $v_{H}^{\pi}(s), v_{H, \rho}^{\pi}(s)$ or $v_{\rho}^{\pi}(s)$ for policy evaluation, we might run into policies that are efficient whatever the initial state of the system. These we call *uniformly* efficient.
+
+(Incidentally, this maximization pattern subsumes a wider array of problems than appears at first glance. If, to take a typical example, there is a criterion for which less is preferable to more (a cost, say), then the corresponding reward function would be defined as its negative, and the pattern would be appropriate. @soland1979multicriteria cites temperature and sugar content as exemplifying another familiar set of criteria for which "an ideal value exists, and desirability decreases monotonically on both sides of this value". He adumbrates a procedure for transforming such criteria so that they become amenable to analysis in a maximization framework. For values above the ideal, the new criterion would be set equal to the ideal value minus the actual value as provided by the original criterion. For values below the ideal, "a positive transformation of the difference must be determined so that each value below the ideal one receives a (negative) criterion score [as given by the new criterion] equal to that of a value above the ideal that is equally desirable.")           
+
+multiobjectiveMDP compiles some of the best known techniques for calculating the efficient values and policies of finite-horizon and discounted infinite-horizon MMDPs.  
+
+* `solve_finite_horizon_MMDP_backward_induction()` applies the dynamic programming procedure described in @mifrani2025counterexample for finding the efficient expected total reward vectors (with or without discount) achieved in a finite-horizon MMDP;
+* `solve_finite_horizon_MMDP_weighting_factor()` generates uniformly efficient policies for a discounted or undiscounted finite-horizon MMDP through the weighting factor approach;
+* `solve_finite_horizon_MMDP_linear_programming()` implements Mifrani and Noll's (2025) linear programming technique for enumerating the efficient Markov deterministic policies of a finite-horizon MMDP subject to an initial-state distribution;
+* `solve_discounted_MMDP_policy_iteration()` determines the uniformly efficient pure policies of an infinite-horizon MMDP by Wakuta's (1992) policy iteration method;
+* `solve_discounted_MMDP_weighting_factor()` locates uniformly efficient pure policies for an infinite-horizon MMDP via the weighting factor approach; and
+* `solve_discounted_MMDP_linear_programming()` adapts Mifrani and Noll's (2025) linear programming technique to the problem of enumerating the efficient pure policies of an infinite-horizon MMDP characterized by an initial-state distribution.
+
+## An example
+
+MMDP theory assures us that an infinite-horizon problem with finite states and actions will admit at least one uniformly efficient pure policy. Wakuta's policy iteration method identifies such policies by testing carefully selected candidates against a set of necessary and sufficient conditions for efficiency. We can run the method by calling `solve_discounted_MMDP_policy_iteration()`.
+
+```{r}
+set.seed(1234)
+# Set up a bi-objective infinite-horizon MMDP
+no_states <- 2
+action_sets <- list(c(1, 2), c(1, 2, 3))
+no_objectives <- 2
+stationary_MMDP <- generate_rand_MMDP(no_states, action_sets, horizon = Inf, no_objectives)
+stationary_transition_probabilities <- stationary_MMDP$P
+stationary_rewards <- stationary_MMDP$R
+rho <- .7
+
+# Use policy iteration to locate the efficient pure policies
+solution <- solve_discounted_MMDP_policy_iteration(stationary_transition_probabilities, stationary_rewards, rho)
+solution$policies
+
+# Inspect their expected discounted total rewards
+solution$value_functions
+```
+
+## References
