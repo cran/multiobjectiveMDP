@@ -1331,7 +1331,7 @@ solve_discounted_MMDP_weighting_factor <- function(stationary_transition_probabi
   for (i in 1:no_objectives) {
     reward_i <- list(lapply(1:no_states, function(s) lapply(stationary_rewards[[1]][[s]], function(r) r[i])))
     maximum_i <- solve_discounted_MDP_policy_iteration(stationary_transition_probabilities, reward_i, rho)$optimal_value_function
-    weighting_factors[, i] <- weighting_factors[, i] / max(maximum_i)
+    weighting_factors[i, ] <- weighting_factors[i, ] / max(maximum_i)
   }
 
   for (w in 1:ncol(weighting_factors)) {
@@ -1515,7 +1515,7 @@ solve_finite_horizon_MMDP_weighting_factor <- function(transition_probabilities,
 
   horizon <- length(rewards)
   no_states <- length(rewards[[1]])
-  no_objectives <- length(rewards[[1]][[1]])
+  no_objectives <- length(rewards[[1]][[1]][[1]])
   weighting_factors <- sapply(1:no_iterations, function(w) rexp(no_objectives))
   weighting_factors <- apply(weighting_factors, MARGIN = 2, function(w) w / sum(w))
   efficient_policies <- NULL
@@ -1525,7 +1525,7 @@ solve_finite_horizon_MMDP_weighting_factor <- function(transition_probabilities,
   for (i in 1:no_objectives) {
     reward_i <- c(lapply(rewards[1:(horizon-1)], function(r) {lapply(1:no_states, function(s) {lapply(r[[s]], function(p) p[i])})}), list(lapply(rewards[[horizon]], function(r) {r[i]})))
     maximum_i <- solve_finite_horizon_MDP_backward_induction(transition_probabilities, reward_i, rho)$optimal_values[, 1]
-    weighting_factors[, i] <- weighting_factors[, i] / max(maximum_i)
+    weighting_factors[i, ] <- weighting_factors[i, ] / max(maximum_i)
   }
 
 

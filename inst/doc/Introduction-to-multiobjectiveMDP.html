@@ -27,46 +27,32 @@ document.addEventListener('DOMContentLoaded', function(e) {
   }
 });
 </script>
-<script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
-// v0.0.1
-// Written by JooYoung Seo (jooyoung@psu.edu) and Atsushi Yasumoto on June 1st, 2020.
-
-document.addEventListener('DOMContentLoaded', function() {
-  const codeList = document.getElementsByClassName("sourceCode");
-  for (var i = 0; i < codeList.length; i++) {
-    var linkList = codeList[i].getElementsByTagName('a');
-    for (var j = 0; j < linkList.length; j++) {
-      if (linkList[j].innerHTML === "") {
-        linkList[j].setAttribute('aria-hidden', 'true');
-      }
-    }
-  }
-});
-</script>
 
 <style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
-    </style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
 
 
 
 <style type="text/css">
-  code {
-    white-space: pre;
-  }
-  .sourceCode {
-    overflow: visible;
-  }
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
 </style>
 <style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -78,55 +64,54 @@ pre > code.sourceCode { white-space: pre-wrap; }
 pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
-  { counter-reset: source-line 0; }
+{ counter-reset: source-line 0; }
 pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
+{ position: relative; left: -4em; counter-increment: source-line; }
 pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
 div.sourceCode
-  {   }
+{ }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
 </style>
 <script>
 // apply pandoc div.sourceCode style to pre.sourceCode instead
@@ -159,6 +144,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
+<style type="text/css">
+
+div.csl-bib-body { }
+div.csl-entry {
+clear: both;
+margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+margin-left:2em;
+text-indent:-2em;
+}
+div.csl-left-margin {
+min-width:2em;
+float:left;
+}
+div.csl-right-inline {
+margin-left:2em;
+padding-left:1em;
+}
+div.csl-indent {
+margin-left: 2em;
+}
+</style>
 
 <style type="text/css">body {
 background-color: #fff;
@@ -356,337 +364,613 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 
 
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="kw">library</span>(multiobjectiveMDP)</span></code></pre></div>
-<p>The raison d’être of multiobjectiveMDP is to draw together computational methods for analyzing and solving multi-objective Markov decision processes (MMDPs), a class of quantitative models of sequential decision making in dynamic environments where conflicting or incommensurate criteria enter simultaneously into the assessment and comparison of policy alternatives. The package currently features</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(multiobjectiveMDP)</span></code></pre></div>
+<p>The raison d’être of multiobjectiveMDP is to draw together
+computational methods for analyzing and solving multi-objective Markov
+decision processes (MMDPs), a class of quantitative models of sequential
+decision making in dynamic environments where conflicting or
+incommensurate criteria enter simultaneously into the assessment and
+comparison of policy alternatives. The package currently features</p>
 <ul>
-<li>vector-valued dynamic programming, as presented in <span class="citation">White (1982)</span> and subsequently rectified in <span class="citation">Mifrani (2025)</span>, for finite-horizon problems;</li>
-<li>vector-valued policy iteration, as developed in <span class="citation">Wakuta (1995)</span>, for discounted infinite-horizon problems;</li>
-<li>the multi-objective linear programming approach described in <span class="citation">Mifrani and Noll (2025)</span> for finite-horizon problems and its extension to the discounted infinite-horizon case; and</li>
-<li>the weighting factor approach, which originated in early developments in multi-objective optimization, applied to both finite- and infinite-horizon problems.</li>
+<li>vector-valued dynamic programming, as presented in <span class="citation">White (1982)</span> and subsequently rectified in <span class="citation">Mifrani (2025)</span>, for finite-horizon
+problems;</li>
+<li>vector-valued policy iteration, as developed in <span class="citation">Wakuta (1995)</span>, for discounted infinite-horizon
+problems;</li>
+<li>the multi-objective linear programming approach described in <span class="citation">Mifrani and Noll (2025)</span> for finite-horizon
+problems and its extension to the discounted infinite-horizon case;
+and</li>
+<li>the weighting factor approach, which originated in early
+developments in multi-objective optimization, applied to both finite-
+and infinite-horizon problems.</li>
 </ul>
-<p>As a byproduct of these implementations, multiobjectiveMDP can also be employed to solve standard Markov decision process (MDP) models, through backward induction for finite-horizon problems, policy iteration for discounted infinite-horizon ones, and linear programming for both.</p>
-<p>In the finite-horizon case, multiobjectiveMDP allows for time heterogeneity both in the dynamics of the problem and its reward structure. In this respect it differs markedly from MDPtoolbox and pomdp, which treat only stationary (single-objective) problems.</p>
-<p>The content of multiobjectiveMDP is described in detail in the package documentation. This vignette centers on background and basic functionality. Some of the material presented below was culled from this author’s doctoral dissertation, an electronic version of which is freely accessible on <a href="https://theses.hal.science/tel-05266740v1">the Web</a>.</p>
+<p>As a byproduct of these implementations, multiobjectiveMDP can also
+be employed to solve standard Markov decision process (MDP) models,
+through backward induction for finite-horizon problems, policy iteration
+for discounted infinite-horizon ones, and linear programming for
+both.</p>
+<p>In the finite-horizon case, multiobjectiveMDP allows for time
+heterogeneity both in the dynamics of the problem and its reward
+structure. In this respect it differs markedly from MDPtoolbox and
+pomdp, which treat only stationary (single-objective) problems.</p>
+<p>The content of multiobjectiveMDP is described in detail in the
+package documentation. This vignette centers on background and basic
+functionality. Some of the material presented below was culled from this
+author’s doctoral dissertation, an electronic version of which is freely
+accessible on <a href="https://theses.hal.science/tel-05266740v1">the
+Web</a>.</p>
 <div id="multi-objective-markov-decision-processes" class="section level2">
 <h2>Multi-objective Markov decision processes</h2>
-<p>It is a commonplace that the decision maker who is unduly concerned with immediate outcomes might not achieve satisfactory overall performance. An accurate appraisal of the future consequences of a course of action becomes all the more imperative, and difficult, in an environment of risk and uncertainty. Fortunately, for all the complexities of the real world, a decision-making problem can often be described adequately in quantitative terms: its dynamics can be expressed mathematically, and the criterion or set of criteria by which performance is judged can be evaluated numerically. The net result is an optimization or control model to which the techniques of operations research can be applied, provided the model is tractable.</p>
-<p>One commonly used model for decision making under uncertainty is the Markov decision process. The model is organized into uniform time points, called <em>decision epochs</em>, at which the environment subject to control occupies a <em>state</em>. In each state, a set of alternative <em>actions</em> are available for the decision maker to choose from. When an action is chosen, a real-valued <em>reward</em> is incurred, and the state at the following epoch is given by a probability distribution determined by the current state, the particular action and possibly the epoch. To decide what action to take in the light of what is known about the system at a given time, a <em>policy</em> is required. The objective of an MDP analysis is to determine policies that produce optimal performance with respect to the reward sequence. Depending on the application, we might, to cite the most common examples, seek policies that maximize the expected total reward over a finite period, or the expected discounted total reward over a long or infinite period, or the expected reward per unit time. (In a broad-gauge review, <span class="citation">White (1988)</span> samples a number of other interesting, less standard formulations.)</p>
-<p>The sheer simplicity of MDPs has generated a rich and highly ramified mathematical theory, and with it a wealth of algorithms for the determination or approximation of optimal policies. Yet from a practitioner’s point of view, the use of a single reward function might prove insufficient to characterize problems where a variety of desiderata enter into the assessment of a state or a decision. Indeed, a survey commissioned by the operations research publication <em>Interfaces</em> found that one of the chief impediments to the successful real-world application of MDP models has been the “multi-objective nature of problems”.</p>
-<p>It is therefore not surprising that a strong research interest began to crystallize in the 1980s around MDPs using multiple reward functions. Such processes are variously termed multi-objective or vector-valued. The elements of, and sequence of events in, an MMDP are those described in the single-objective case, except that actions generate multiple rewards in the form of a vector. The components of this vector define marginal reward functions expressing each a particular decision-making criterion. Associated with each criterion is a function of the relevant marginal reward sequence which tells us how well we did with respect to that criterion. The collection of these functions constitutes the vector-valued function by which we judge a policy’s overall performance. Before turning to specific definitions and how they are implemented in the package, some notation is in order. First of all, let</p>
+<p>It is a commonplace that the decision maker who is unduly concerned
+with immediate outcomes might not achieve satisfactory overall
+performance. An accurate appraisal of the future consequences of a
+course of action becomes all the more imperative, and difficult, in an
+environment of risk and uncertainty. Fortunately, for all the
+complexities of the real world, a decision-making problem can often be
+described adequately in quantitative terms: its dynamics can be
+expressed mathematically, and the criterion or set of criteria by which
+performance is judged can be evaluated numerically. The net result is an
+optimization or control model to which the techniques of operations
+research can be applied, provided the model is tractable.</p>
+<p>One commonly used model for decision making under uncertainty is the
+Markov decision process. The model is organized into uniform time
+points, called <em>decision epochs</em>, at which the environment
+subject to control occupies a <em>state</em>. In each state, a set of
+alternative <em>actions</em> are available for the decision maker to
+choose from. When an action is chosen, a real-valued <em>reward</em> is
+incurred, and the state at the following epoch is given by a probability
+distribution determined by the current state, the particular action and
+possibly the epoch. To decide what action to take in the light of what
+is known about the system at a given time, a <em>policy</em> is
+required. The objective of an MDP analysis is to determine policies that
+produce optimal performance with respect to the reward sequence.
+Depending on the application, we might, to cite the most common
+examples, seek policies that maximize the expected total reward over a
+finite period, or the expected discounted total reward over a long or
+infinite period, or the expected reward per unit time. (In a broad-gauge
+review, <span class="citation">White (1988)</span> samples a number of
+other interesting, less standard formulations.)</p>
+<p>The sheer simplicity of MDPs has generated a rich and highly ramified
+mathematical theory, and with it a wealth of algorithms for the
+determination or approximation of optimal policies. Yet from a
+practitioner’s point of view, the use of a single reward function might
+prove insufficient to characterize problems where a variety of
+desiderata enter into the assessment of a state or a decision. Indeed, a
+survey commissioned by the operations research publication
+<em>Interfaces</em> found that one of the chief impediments to the
+successful real-world application of MDP models has been the
+“multi-objective nature of problems”.</p>
+<p>It is therefore not surprising that a strong research interest began
+to crystallize in the 1980s around MDPs using multiple reward functions.
+Such processes are variously termed multi-objective or vector-valued.
+The elements of, and sequence of events in, an MMDP are those described
+in the single-objective case, except that actions generate multiple
+rewards in the form of a vector. The components of this vector define
+marginal reward functions expressing each a particular decision-making
+criterion. Associated with each criterion is a function of the relevant
+marginal reward sequence which tells us how well we did with respect to
+that criterion. The collection of these functions constitutes the
+vector-valued function by which we judge a policy’s overall performance.
+Before turning to specific definitions and how they are implemented in
+the package, some notation is in order. First of all, let</p>
 <ul>
-<li><span class="math inline">\(T = \{1, \dots, H\}\)</span> denote the set of decision epochs, <span class="math inline">\(H\)</span> being finite or infinite;<br />
+<li><span class="math inline">\(T = \{1, \dots, H\}\)</span> denote the
+set of decision epochs, <span class="math inline">\(H\)</span> being
+finite or infinite;<br />
 </li>
-<li><span class="math inline">\(S = \{1, \dots, N\}\)</span> denote the state set; and</li>
-<li><span class="math inline">\(A_s = \{1, \dots, k_s\}\)</span> denote the actions permissible in state <span class="math inline">\(s\)</span>.</li>
+<li><span class="math inline">\(S = \{1, \dots, N\}\)</span> denote the
+state set; and</li>
+<li><span class="math inline">\(A_s = \{1, \dots, k_s\}\)</span> denote
+the actions permissible in state <span class="math inline">\(s\)</span>.</li>
 </ul>
-<p>multiobjectiveMDP assumes finite states and actions, but some of the theory on which it rests carries over to more abstract model formulations. We call <span class="math inline">\(H\)</span> the <em>horizon</em>.</p>
+<p>multiobjectiveMDP assumes finite states and actions, but some of the
+theory on which it rests carries over to more abstract model
+formulations. We call <span class="math inline">\(H\)</span> the
+<em>horizon</em>.</p>
 <div id="transition-probabilities-and-rewards" class="section level3">
 <h3>Transition probabilities and rewards</h3>
-<p>In a <em>finite-horizon problem</em>, decisions are made sequentially at each of the epochs 1 through <span class="math inline">\(H-1\)</span>. For each <span class="math inline">\(t \in T \setminus \{H\}\)</span>, we shall write</p>
+<p>In a <em>finite-horizon problem</em>, decisions are made sequentially
+at each of the epochs 1 through <span class="math inline">\(H-1\)</span>. For each <span class="math inline">\(t \in T \setminus \{H\}\)</span>, we shall
+write</p>
 <ul>
-<li><span class="math inline">\(p_t(j | s_t, a_t)\)</span> to refer to the probability of transition from state <span class="math inline">\(s_t\)</span> to state <span class="math inline">\(j\)</span> under action <span class="math inline">\(a_t \in A_s\)</span> given that the action is taken at time <span class="math inline">\(t\)</span>; and</li>
-<li><span class="math inline">\(R_t(s_t, a_t) = (r_{t, 1}(s_t, a_t), \dots, r_{t, k}(s_t, a_t))\)</span> to designate the reward vector for selecting action <span class="math inline">\(a_t\)</span> in state <span class="math inline">\(s_t\)</span> at time <span class="math inline">\(t\)</span>, where <span class="math inline">\(r_{t, i}(s_t, a_t)\)</span> is the reward associated with the <span class="math inline">\(i\)</span>th objective.</li>
+<li><span class="math inline">\(p_t(j | s_t, a_t)\)</span> to refer to
+the probability of transition from state <span class="math inline">\(s_t\)</span> to state <span class="math inline">\(j\)</span> under action <span class="math inline">\(a_t \in A_s\)</span> given that the action is
+taken at time <span class="math inline">\(t\)</span>; and</li>
+<li><span class="math inline">\(R_t(s_t, a_t) = (r_{t, 1}(s_t, a_t),
+\dots, r_{t, k}(s_t, a_t))\)</span> to designate the reward vector for
+selecting action <span class="math inline">\(a_t\)</span> in state <span class="math inline">\(s_t\)</span> at time <span class="math inline">\(t\)</span>, where <span class="math inline">\(r_{t, i}(s_t, a_t)\)</span> is the reward
+associated with the <span class="math inline">\(i\)</span>th
+objective.</li>
 </ul>
-<p>While it is customary to preclude action selection at epoch <span class="math inline">\(H\)</span>, a terminal reward <span class="math inline">\(R_H(s_H) = (r_{H, 1}(s_H), \dots, r_{H, k}(s_H))\)</span> is nonetheless accrued as a function of the final system state <span class="math inline">\(s_H\)</span>.</p>
-<p><em>Infinite-horizon problems</em>, on the other hand, assume stationary (i.e., time-homogeneous) transition probabilities <span class="math inline">\(p(j | s, a)\)</span> and rewards <span class="math inline">\(R(s, a) = (r_1(s, a), \dots, r_k(s, a))\)</span> with no prospect of termination.</p>
-<p>In multiobjectiveMDP, we require transition probabilities and rewards to be stored in lists of a certain standardized form. To get a flavor of this template, we will ask <code>generate_rand_MMDP()</code> to produce a two-state bi-objective model with two actions per state, first in a finite-horizon situation then in an infinite-horizon one.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>no_states &lt;-<span class="st"> </span><span class="dv">2</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>action_sets &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>no_objectives &lt;-<span class="st"> </span><span class="dv">2</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a><span class="co"># Generate a two-state bi-objective MDP having three epochs and two actions per state</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a>finite_horizon_MMDP &lt;-<span class="st"> </span><span class="kw">generate_rand_MMDP</span>(no_states, action_sets, <span class="dt">horizon =</span> <span class="dv">3</span>, no_objectives)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a><span class="co"># Inspect the transition probabilities</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a>P &lt;-<span class="st"> </span>finite_horizon_MMDP<span class="op">$</span>P</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a>P</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true"></a><span class="co">#&gt; [[1]][[1]]</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true"></a><span class="co">#&gt; [[1]][[1]][[1]]</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true"></a><span class="co">#&gt; [1] 0.9102211 0.0897789</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true"></a><span class="co">#&gt; [[1]][[1]][[2]]</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true"></a><span class="co">#&gt; [1] 0.8114785 0.1885215</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true"></a><span class="co">#&gt; [[1]][[2]]</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true"></a><span class="co">#&gt; [[1]][[2]][[1]]</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true"></a><span class="co">#&gt; [1] 0.5242763 0.4757237</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true"></a><span class="co">#&gt; [[1]][[2]][[2]]</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true"></a><span class="co">#&gt; [1] 0.3520739 0.6479261</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true"></a><span class="co">#&gt; [[2]][[1]]</span></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true"></a><span class="co">#&gt; [[2]][[1]][[1]]</span></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true"></a><span class="co">#&gt; [1] 0.98360906 0.01639094</span></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true"></a><span class="co">#&gt; [[2]][[1]][[2]]</span></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true"></a><span class="co">#&gt; [1] 0.7326694 0.2673306</span></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true"></a><span class="co">#&gt; [[2]][[2]]</span></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true"></a><span class="co">#&gt; [[2]][[2]][[1]]</span></span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true"></a><span class="co">#&gt; [1] 0.1940003 0.8059997</span></span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true"></a><span class="co">#&gt; [[2]][[2]][[2]]</span></span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true"></a><span class="co">#&gt; [1] 0.4440376 0.5559624</span></span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true"></a></span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true"></a><span class="co"># Inspect the rewards</span></span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true"></a>R &lt;-<span class="st"> </span>finite_horizon_MMDP<span class="op">$</span>R</span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true"></a>R</span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true"></a><span class="co">#&gt; [[1]][[1]]</span></span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true"></a><span class="co">#&gt; [[1]][[1]][[1]]</span></span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true"></a><span class="co">#&gt; [1] 0.006581957 1.742746090</span></span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true"></a><span class="co">#&gt; [[1]][[1]][[2]]</span></span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true"></a><span class="co">#&gt; [1] 0.8240815 0.2026179</span></span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true"></a><span class="co">#&gt; [[1]][[2]]</span></span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true"></a><span class="co">#&gt; [[1]][[2]][[1]]</span></span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true"></a><span class="co">#&gt; [1] 1.880077 1.596105</span></span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true"></a><span class="co">#&gt; [[1]][[2]][[2]]</span></span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true"></a><span class="co">#&gt; [1] 1.75068013 0.03172553</span></span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true"></a><span class="co">#&gt; [[2]][[1]]</span></span>
-<span id="cb2-67"><a href="#cb2-67" aria-hidden="true"></a><span class="co">#&gt; [[2]][[1]][[1]]</span></span>
-<span id="cb2-68"><a href="#cb2-68" aria-hidden="true"></a><span class="co">#&gt; [1] 1.8350640 0.5193413</span></span>
-<span id="cb2-69"><a href="#cb2-69" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb2-70"><a href="#cb2-70" aria-hidden="true"></a><span class="co">#&gt; [[2]][[1]][[2]]</span></span>
-<span id="cb2-71"><a href="#cb2-71" aria-hidden="true"></a><span class="co">#&gt; [1] 0.3835416 0.9404444</span></span>
-<span id="cb2-72"><a href="#cb2-72" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb2-73"><a href="#cb2-73" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb2-74"><a href="#cb2-74" aria-hidden="true"></a><span class="co">#&gt; [[2]][[2]]</span></span>
-<span id="cb2-75"><a href="#cb2-75" aria-hidden="true"></a><span class="co">#&gt; [[2]][[2]][[1]]</span></span>
-<span id="cb2-76"><a href="#cb2-76" aria-hidden="true"></a><span class="co">#&gt; [1] 0.003994946 0.354189055</span></span>
-<span id="cb2-77"><a href="#cb2-77" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb2-78"><a href="#cb2-78" aria-hidden="true"></a><span class="co">#&gt; [[2]][[2]][[2]]</span></span>
-<span id="cb2-79"><a href="#cb2-79" aria-hidden="true"></a><span class="co">#&gt; [1] 0.434543487 0.009091824</span></span>
-<span id="cb2-80"><a href="#cb2-80" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb2-81"><a href="#cb2-81" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb2-82"><a href="#cb2-82" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb2-83"><a href="#cb2-83" aria-hidden="true"></a><span class="co">#&gt; [[3]]</span></span>
-<span id="cb2-84"><a href="#cb2-84" aria-hidden="true"></a><span class="co">#&gt; [[3]][[1]]</span></span>
-<span id="cb2-85"><a href="#cb2-85" aria-hidden="true"></a><span class="co">#&gt; [1] 1.610286033 0.007866976</span></span>
-<span id="cb2-86"><a href="#cb2-86" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb2-87"><a href="#cb2-87" aria-hidden="true"></a><span class="co">#&gt; [[3]][[2]]</span></span>
-<span id="cb2-88"><a href="#cb2-88" aria-hidden="true"></a><span class="co">#&gt; [1] 0.81420521 0.02901325</span></span></code></pre></div>
-<p>We see that <code>P</code> breaks down into two lists, one per decision epoch, such that each <code>P[[t]]</code> has the size of the state set. Under <code>P[[t]][[s]]</code> we find two numeric vectors: <code>P[[t]][[s]][[1]]</code>, which gives the transition probability distribution <span class="math inline">\(p_t(.|s, 1)\)</span> under state <span class="math inline">\(s\)</span> and action <span class="math inline">\(1\)</span>, and <code>P[[t]][[s]][[2]]</code>, which gives the analogous distribution under action <span class="math inline">\(2\)</span>. The components of <code>P[[t]][[s]][[a]]</code> sum to 1.0.</p>
-<p>The reward list <code>R</code> comprises three lists, two for the non-terminal epochs and one for the terminal epoch, with <code>R[[t]]</code> containing as many components as there are states. For non-terminal <span class="math inline">\(t\)</span>, <code>R[[t]][[s]]</code> is itself a list of two vectors: <code>R[[t]][[s]][[1]]</code>, the reward vector <span class="math inline">\(R_t(s, 1)\)</span> for selecting action <span class="math inline">\(1\)</span> in state <span class="math inline">\(s\)</span> at time <span class="math inline">\(t\)</span>, and <code>R[[t]][[s]][[2]]</code>, the reward vector <span class="math inline">\(R_t(s, 2)\)</span> for selecting action <span class="math inline">\(2\)</span>. The terminal rewards <span class="math inline">\(R_H(s)\)</span> are stored in the vectors <code>R[[horizon]][[s]]</code>.</p>
-<p>Let us now examine an infinite-horizon counterpart to this problem.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>no_states &lt;-<span class="st"> </span><span class="dv">2</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>action_sets &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>no_objectives &lt;-<span class="st"> </span><span class="dv">2</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a><span class="co"># Generate an infinite-horizon two-state bi-objective MDP having two actions per state</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a>stationary_MMDP &lt;-<span class="st"> </span><span class="kw">generate_rand_MMDP</span>(no_states, action_sets, <span class="dt">horizon =</span> <span class="ot">Inf</span>, no_objectives)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a><span class="co"># Inspect the transition probabilities</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true"></a>P &lt;-<span class="st"> </span>stationary_MMDP<span class="op">$</span>P</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true"></a>P</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true"></a><span class="co">#&gt; [[1]][[1]]</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true"></a><span class="co">#&gt; [[1]][[1]][[1]]</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true"></a><span class="co">#&gt; [1] 0.9102211 0.0897789</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true"></a><span class="co">#&gt; [[1]][[1]][[2]]</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true"></a><span class="co">#&gt; [1] 0.8114785 0.1885215</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true"></a><span class="co">#&gt; [[1]][[2]]</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true"></a><span class="co">#&gt; [[1]][[2]][[1]]</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true"></a><span class="co">#&gt; [1] 0.5242763 0.4757237</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true"></a><span class="co">#&gt; [[1]][[2]][[2]]</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true"></a><span class="co">#&gt; [1] 0.3520739 0.6479261</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true"></a></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true"></a><span class="co"># Inspect the rewards</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true"></a>R &lt;-<span class="st"> </span>stationary_MMDP<span class="op">$</span>R</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true"></a>R</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true"></a><span class="co">#&gt; [[1]][[1]]</span></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true"></a><span class="co">#&gt; [[1]][[1]][[1]]</span></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true"></a><span class="co">#&gt; [1] 0.006581957 1.742746090</span></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true"></a><span class="co">#&gt; [[1]][[1]][[2]]</span></span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true"></a><span class="co">#&gt; [1] 0.8240815 0.2026179</span></span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true"></a><span class="co">#&gt; [[1]][[2]]</span></span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true"></a><span class="co">#&gt; [[1]][[2]][[1]]</span></span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true"></a><span class="co">#&gt; [1] 1.880077 1.596105</span></span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true"></a><span class="co">#&gt; [[1]][[2]][[2]]</span></span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true"></a><span class="co">#&gt; [1] 1.75068013 0.03172553</span></span></code></pre></div>
-<p>These lists bear a similar but much simpler structure due to the stationarity of infinite-horizon MMDPs. Both are of length one, with <code>P[[1]]</code> and <code>R[[1]]</code> breaking down into one list per state. Under <code>P[[1]][[s]]</code> we find the vectors <code>P[[1]][[s]][[1]]</code> and <code>P[[1]][[s]][[2]]</code>, which define the stationary transition probability distributions <span class="math inline">\(p(. | s, 1)\)</span> and <span class="math inline">\(p(. | s, 2)\)</span> for a fixed state <span class="math inline">\(s\)</span>. The vectors <code>R[[1]][[s]][[1]]</code> and <code>R[[1]][[s]][[2]]</code> specify the rewards <span class="math inline">\(R(s, 1)\)</span> and <span class="math inline">\(R(s, 2)\)</span>.</p>
-<p>multiobjectiveMDP supplies functions that help ascertain if a list constitutes an acceptable transition probability or reward list for a finite- or infinite-horizon MMDP. These are the functions prefixed by <code>are_valid_</code>.</p>
+<p>While it is customary to preclude action selection at epoch <span class="math inline">\(H\)</span>, a terminal reward <span class="math inline">\(R_H(s_H) = (r_{H, 1}(s_H), \dots, r_{H,
+k}(s_H))\)</span> is nonetheless accrued as a function of the final
+system state <span class="math inline">\(s_H\)</span>.</p>
+<p><em>Infinite-horizon problems</em>, on the other hand, assume
+stationary (i.e., time-homogeneous) transition probabilities <span class="math inline">\(p(j | s, a)\)</span> and rewards <span class="math inline">\(R(s, a) = (r_1(s, a), \dots, r_k(s, a))\)</span>
+with no prospect of termination.</p>
+<p>In multiobjectiveMDP, we require transition probabilities and rewards
+to be stored in lists of a certain standardized form. To get a flavor of
+this template, we will ask <code>generate_rand_MMDP()</code> to produce
+a two-state bi-objective model with two actions per state, first in a
+finite-horizon situation then in an infinite-horizon one.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>no_states <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>action_sets <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>no_objectives <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="co"># Generate a two-state bi-objective MDP having three epochs and two actions per state</span></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>finite_horizon_MMDP <span class="ot">&lt;-</span> <span class="fu">generate_rand_MMDP</span>(no_states, action_sets, <span class="at">horizon =</span> <span class="dv">3</span>, no_objectives)</span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a><span class="co"># Inspect the transition probabilities</span></span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>P <span class="ot">&lt;-</span> finite_horizon_MMDP<span class="sc">$</span>P</span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>P</span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a><span class="co">#&gt; [[1]][[1]]</span></span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a><span class="co">#&gt; [[1]][[1]][[1]]</span></span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a><span class="co">#&gt; [1] 0.9102211 0.0897789</span></span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a><span class="co">#&gt; [[1]][[1]][[2]]</span></span>
+<span id="cb2-16"><a href="#cb2-16" tabindex="-1"></a><span class="co">#&gt; [1] 0.8114785 0.1885215</span></span>
+<span id="cb2-17"><a href="#cb2-17" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-18"><a href="#cb2-18" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-19"><a href="#cb2-19" tabindex="-1"></a><span class="co">#&gt; [[1]][[2]]</span></span>
+<span id="cb2-20"><a href="#cb2-20" tabindex="-1"></a><span class="co">#&gt; [[1]][[2]][[1]]</span></span>
+<span id="cb2-21"><a href="#cb2-21" tabindex="-1"></a><span class="co">#&gt; [1] 0.5242763 0.4757237</span></span>
+<span id="cb2-22"><a href="#cb2-22" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-23"><a href="#cb2-23" tabindex="-1"></a><span class="co">#&gt; [[1]][[2]][[2]]</span></span>
+<span id="cb2-24"><a href="#cb2-24" tabindex="-1"></a><span class="co">#&gt; [1] 0.3520739 0.6479261</span></span>
+<span id="cb2-25"><a href="#cb2-25" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-26"><a href="#cb2-26" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-27"><a href="#cb2-27" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-28"><a href="#cb2-28" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb2-29"><a href="#cb2-29" tabindex="-1"></a><span class="co">#&gt; [[2]][[1]]</span></span>
+<span id="cb2-30"><a href="#cb2-30" tabindex="-1"></a><span class="co">#&gt; [[2]][[1]][[1]]</span></span>
+<span id="cb2-31"><a href="#cb2-31" tabindex="-1"></a><span class="co">#&gt; [1] 0.98360906 0.01639094</span></span>
+<span id="cb2-32"><a href="#cb2-32" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-33"><a href="#cb2-33" tabindex="-1"></a><span class="co">#&gt; [[2]][[1]][[2]]</span></span>
+<span id="cb2-34"><a href="#cb2-34" tabindex="-1"></a><span class="co">#&gt; [1] 0.7326694 0.2673306</span></span>
+<span id="cb2-35"><a href="#cb2-35" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-36"><a href="#cb2-36" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-37"><a href="#cb2-37" tabindex="-1"></a><span class="co">#&gt; [[2]][[2]]</span></span>
+<span id="cb2-38"><a href="#cb2-38" tabindex="-1"></a><span class="co">#&gt; [[2]][[2]][[1]]</span></span>
+<span id="cb2-39"><a href="#cb2-39" tabindex="-1"></a><span class="co">#&gt; [1] 0.1940003 0.8059997</span></span>
+<span id="cb2-40"><a href="#cb2-40" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-41"><a href="#cb2-41" tabindex="-1"></a><span class="co">#&gt; [[2]][[2]][[2]]</span></span>
+<span id="cb2-42"><a href="#cb2-42" tabindex="-1"></a><span class="co">#&gt; [1] 0.4440376 0.5559624</span></span>
+<span id="cb2-43"><a href="#cb2-43" tabindex="-1"></a></span>
+<span id="cb2-44"><a href="#cb2-44" tabindex="-1"></a><span class="co"># Inspect the rewards</span></span>
+<span id="cb2-45"><a href="#cb2-45" tabindex="-1"></a>R <span class="ot">&lt;-</span> finite_horizon_MMDP<span class="sc">$</span>R</span>
+<span id="cb2-46"><a href="#cb2-46" tabindex="-1"></a>R</span>
+<span id="cb2-47"><a href="#cb2-47" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb2-48"><a href="#cb2-48" tabindex="-1"></a><span class="co">#&gt; [[1]][[1]]</span></span>
+<span id="cb2-49"><a href="#cb2-49" tabindex="-1"></a><span class="co">#&gt; [[1]][[1]][[1]]</span></span>
+<span id="cb2-50"><a href="#cb2-50" tabindex="-1"></a><span class="co">#&gt; [1] 0.006581957 1.742746090</span></span>
+<span id="cb2-51"><a href="#cb2-51" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-52"><a href="#cb2-52" tabindex="-1"></a><span class="co">#&gt; [[1]][[1]][[2]]</span></span>
+<span id="cb2-53"><a href="#cb2-53" tabindex="-1"></a><span class="co">#&gt; [1] 0.8240815 0.2026179</span></span>
+<span id="cb2-54"><a href="#cb2-54" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-55"><a href="#cb2-55" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-56"><a href="#cb2-56" tabindex="-1"></a><span class="co">#&gt; [[1]][[2]]</span></span>
+<span id="cb2-57"><a href="#cb2-57" tabindex="-1"></a><span class="co">#&gt; [[1]][[2]][[1]]</span></span>
+<span id="cb2-58"><a href="#cb2-58" tabindex="-1"></a><span class="co">#&gt; [1] 1.880077 1.596105</span></span>
+<span id="cb2-59"><a href="#cb2-59" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-60"><a href="#cb2-60" tabindex="-1"></a><span class="co">#&gt; [[1]][[2]][[2]]</span></span>
+<span id="cb2-61"><a href="#cb2-61" tabindex="-1"></a><span class="co">#&gt; [1] 1.75068013 0.03172553</span></span>
+<span id="cb2-62"><a href="#cb2-62" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-63"><a href="#cb2-63" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-64"><a href="#cb2-64" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-65"><a href="#cb2-65" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb2-66"><a href="#cb2-66" tabindex="-1"></a><span class="co">#&gt; [[2]][[1]]</span></span>
+<span id="cb2-67"><a href="#cb2-67" tabindex="-1"></a><span class="co">#&gt; [[2]][[1]][[1]]</span></span>
+<span id="cb2-68"><a href="#cb2-68" tabindex="-1"></a><span class="co">#&gt; [1] 1.8350640 0.5193413</span></span>
+<span id="cb2-69"><a href="#cb2-69" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-70"><a href="#cb2-70" tabindex="-1"></a><span class="co">#&gt; [[2]][[1]][[2]]</span></span>
+<span id="cb2-71"><a href="#cb2-71" tabindex="-1"></a><span class="co">#&gt; [1] 0.3835416 0.9404444</span></span>
+<span id="cb2-72"><a href="#cb2-72" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-73"><a href="#cb2-73" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-74"><a href="#cb2-74" tabindex="-1"></a><span class="co">#&gt; [[2]][[2]]</span></span>
+<span id="cb2-75"><a href="#cb2-75" tabindex="-1"></a><span class="co">#&gt; [[2]][[2]][[1]]</span></span>
+<span id="cb2-76"><a href="#cb2-76" tabindex="-1"></a><span class="co">#&gt; [1] 0.003994946 0.354189055</span></span>
+<span id="cb2-77"><a href="#cb2-77" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-78"><a href="#cb2-78" tabindex="-1"></a><span class="co">#&gt; [[2]][[2]][[2]]</span></span>
+<span id="cb2-79"><a href="#cb2-79" tabindex="-1"></a><span class="co">#&gt; [1] 0.434543487 0.009091824</span></span>
+<span id="cb2-80"><a href="#cb2-80" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-81"><a href="#cb2-81" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-82"><a href="#cb2-82" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-83"><a href="#cb2-83" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
+<span id="cb2-84"><a href="#cb2-84" tabindex="-1"></a><span class="co">#&gt; [[3]][[1]]</span></span>
+<span id="cb2-85"><a href="#cb2-85" tabindex="-1"></a><span class="co">#&gt; [1] 1.610286033 0.007866976</span></span>
+<span id="cb2-86"><a href="#cb2-86" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-87"><a href="#cb2-87" tabindex="-1"></a><span class="co">#&gt; [[3]][[2]]</span></span>
+<span id="cb2-88"><a href="#cb2-88" tabindex="-1"></a><span class="co">#&gt; [1] 0.81420521 0.02901325</span></span></code></pre></div>
+<p>We see that <code>P</code> breaks down into two lists, one per
+decision epoch, such that each <code>P[[t]]</code> has the size of the
+state set. Under <code>P[[t]][[s]]</code> we find two numeric vectors:
+<code>P[[t]][[s]][[1]]</code>, which gives the transition probability
+distribution <span class="math inline">\(p_t(.|s, 1)\)</span> under
+state <span class="math inline">\(s\)</span> and action <span class="math inline">\(1\)</span>, and <code>P[[t]][[s]][[2]]</code>,
+which gives the analogous distribution under action <span class="math inline">\(2\)</span>. The components of
+<code>P[[t]][[s]][[a]]</code> sum to 1.0.</p>
+<p>The reward list <code>R</code> comprises three lists, two for the
+non-terminal epochs and one for the terminal epoch, with
+<code>R[[t]]</code> containing as many components as there are states.
+For non-terminal <span class="math inline">\(t\)</span>,
+<code>R[[t]][[s]]</code> is itself a list of two vectors:
+<code>R[[t]][[s]][[1]]</code>, the reward vector <span class="math inline">\(R_t(s, 1)\)</span> for selecting action <span class="math inline">\(1\)</span> in state <span class="math inline">\(s\)</span> at time <span class="math inline">\(t\)</span>, and <code>R[[t]][[s]][[2]]</code>, the
+reward vector <span class="math inline">\(R_t(s, 2)\)</span> for
+selecting action <span class="math inline">\(2\)</span>. The terminal
+rewards <span class="math inline">\(R_H(s)\)</span> are stored in the
+vectors <code>R[[horizon]][[s]]</code>.</p>
+<p>Let us now examine an infinite-horizon counterpart to this
+problem.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>no_states <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>action_sets <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>no_objectives <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="co"># Generate an infinite-horizon two-state bi-objective MDP having two actions per state</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>stationary_MMDP <span class="ot">&lt;-</span> <span class="fu">generate_rand_MMDP</span>(no_states, action_sets, <span class="at">horizon =</span> <span class="cn">Inf</span>, no_objectives)</span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="co"># Inspect the transition probabilities</span></span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a>P <span class="ot">&lt;-</span> stationary_MMDP<span class="sc">$</span>P</span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a>P</span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a><span class="co">#&gt; [[1]][[1]]</span></span>
+<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a><span class="co">#&gt; [[1]][[1]][[1]]</span></span>
+<span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a><span class="co">#&gt; [1] 0.9102211 0.0897789</span></span>
+<span id="cb3-15"><a href="#cb3-15" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-16"><a href="#cb3-16" tabindex="-1"></a><span class="co">#&gt; [[1]][[1]][[2]]</span></span>
+<span id="cb3-17"><a href="#cb3-17" tabindex="-1"></a><span class="co">#&gt; [1] 0.8114785 0.1885215</span></span>
+<span id="cb3-18"><a href="#cb3-18" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-19"><a href="#cb3-19" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-20"><a href="#cb3-20" tabindex="-1"></a><span class="co">#&gt; [[1]][[2]]</span></span>
+<span id="cb3-21"><a href="#cb3-21" tabindex="-1"></a><span class="co">#&gt; [[1]][[2]][[1]]</span></span>
+<span id="cb3-22"><a href="#cb3-22" tabindex="-1"></a><span class="co">#&gt; [1] 0.5242763 0.4757237</span></span>
+<span id="cb3-23"><a href="#cb3-23" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-24"><a href="#cb3-24" tabindex="-1"></a><span class="co">#&gt; [[1]][[2]][[2]]</span></span>
+<span id="cb3-25"><a href="#cb3-25" tabindex="-1"></a><span class="co">#&gt; [1] 0.3520739 0.6479261</span></span>
+<span id="cb3-26"><a href="#cb3-26" tabindex="-1"></a></span>
+<span id="cb3-27"><a href="#cb3-27" tabindex="-1"></a><span class="co"># Inspect the rewards</span></span>
+<span id="cb3-28"><a href="#cb3-28" tabindex="-1"></a>R <span class="ot">&lt;-</span> stationary_MMDP<span class="sc">$</span>R</span>
+<span id="cb3-29"><a href="#cb3-29" tabindex="-1"></a>R</span>
+<span id="cb3-30"><a href="#cb3-30" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb3-31"><a href="#cb3-31" tabindex="-1"></a><span class="co">#&gt; [[1]][[1]]</span></span>
+<span id="cb3-32"><a href="#cb3-32" tabindex="-1"></a><span class="co">#&gt; [[1]][[1]][[1]]</span></span>
+<span id="cb3-33"><a href="#cb3-33" tabindex="-1"></a><span class="co">#&gt; [1] 0.006581957 1.742746090</span></span>
+<span id="cb3-34"><a href="#cb3-34" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-35"><a href="#cb3-35" tabindex="-1"></a><span class="co">#&gt; [[1]][[1]][[2]]</span></span>
+<span id="cb3-36"><a href="#cb3-36" tabindex="-1"></a><span class="co">#&gt; [1] 0.8240815 0.2026179</span></span>
+<span id="cb3-37"><a href="#cb3-37" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-38"><a href="#cb3-38" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-39"><a href="#cb3-39" tabindex="-1"></a><span class="co">#&gt; [[1]][[2]]</span></span>
+<span id="cb3-40"><a href="#cb3-40" tabindex="-1"></a><span class="co">#&gt; [[1]][[2]][[1]]</span></span>
+<span id="cb3-41"><a href="#cb3-41" tabindex="-1"></a><span class="co">#&gt; [1] 1.880077 1.596105</span></span>
+<span id="cb3-42"><a href="#cb3-42" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-43"><a href="#cb3-43" tabindex="-1"></a><span class="co">#&gt; [[1]][[2]][[2]]</span></span>
+<span id="cb3-44"><a href="#cb3-44" tabindex="-1"></a><span class="co">#&gt; [1] 1.75068013 0.03172553</span></span></code></pre></div>
+<p>These lists bear a similar but much simpler structure due to the
+stationarity of infinite-horizon MMDPs. Both are of length one, with
+<code>P[[1]]</code> and <code>R[[1]]</code> breaking down into one list
+per state. Under <code>P[[1]][[s]]</code> we find the vectors
+<code>P[[1]][[s]][[1]]</code> and <code>P[[1]][[s]][[2]]</code>, which
+define the stationary transition probability distributions <span class="math inline">\(p(. | s, 1)\)</span> and <span class="math inline">\(p(. | s, 2)\)</span> for a fixed state <span class="math inline">\(s\)</span>. The vectors
+<code>R[[1]][[s]][[1]]</code> and <code>R[[1]][[s]][[2]]</code> specify
+the rewards <span class="math inline">\(R(s, 1)\)</span> and <span class="math inline">\(R(s, 2)\)</span>.</p>
+<p>multiobjectiveMDP supplies functions that help ascertain if a list
+constitutes an acceptable transition probability or reward list for a
+finite- or infinite-horizon MMDP. These are the functions prefixed by
+<code>are_valid_</code>.</p>
 </div>
 <div id="decision-rules-and-policies" class="section level3">
 <h3>Decision rules and policies</h3>
-<p>Whether the horizon is finite or infinite, we assume that the decision maker is always permitted exact observation of the state of the system before determining an appropriate action. <em>Decision rules</em> generally connote prescriptions for action selection viewed as mappings from states to actions. Such rules are called <em>Markov</em> because they depend only on the state in which the action is executed and <em>deterministic</em> because they specify actions with certainty.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
-<p>A policy is a sequence of decision rules dictating the rule to be used at each epoch. We might think of a policy as a sequence <span class="math inline">\(\pi = (d_1, \dots, d_{H-1})\)</span> or <span class="math inline">\(\pi = (d_1, d_2, \dots)\)</span>, the latter form being appropriate for infinite-horizon problems, where <span class="math inline">\(d_t\)</span> is the rule to apply at epoch <span class="math inline">\(t\)</span>. A policy is <em>stationary</em> if it uniformly recommends the same rule, and a stationary policy is said to be <em>pure</em> if the rule it prescribes is Markov deterministic. Pure policies figure prominently in the study of infinite-horizon MMDPs.</p>
-<p>In multiobjectiveMDP, finite-horizon (Markov deterministic) policies are encoded in integer matrices where the <span class="math inline">\((s, t)\)</span>-th entry gives the action <span class="math inline">\(d_t(s)\)</span> recommended for state <span class="math inline">\(s\)</span> at time <span class="math inline">\(t\)</span>. Consider the following example from a two-state, five-period model that provides two actions for state <span class="math inline">\(1\)</span> and three for state <span class="math inline">\(2\)</span>.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>no_states &lt;-<span class="st"> </span><span class="dv">2</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="co"># The action set for state 1 is {1, 2}; for state 2 it is {1, 2, 3}</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a>action_sets &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a>horizon &lt;-<span class="st"> </span><span class="dv">5</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a>policy &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">data =</span> <span class="kw">c</span>(<span class="kw">sample</span>(action_sets[[<span class="dv">1</span>]], <span class="dt">size =</span> horizon<span class="dv">-1</span>, <span class="dt">replace =</span> T), <span class="kw">sample</span>(action_sets[[<span class="dv">2</span>]], <span class="dt">size =</span> horizon<span class="dv">-1</span>, <span class="dt">replace =</span> T)), <span class="dt">nrow =</span> no_states, <span class="dt">ncol =</span> horizon<span class="dv">-1</span>)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a>policy</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true"></a><span class="co">#&gt;      [,1] [,2] [,3] [,4]</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true"></a><span class="co">#&gt; [1,]    2    2    1    1</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true"></a><span class="co">#&gt; [2,]    2    2    3    1</span></span></code></pre></div>
-<p>Each of the four columns of <code>policy</code> describes the decision rule to apply at the corresponding epoch. For instance, if the system occupies state <span class="math inline">\(1\)</span> at epoch <span class="math inline">\(3\)</span>, column three says we must take action <span class="math inline">\(1\)</span>. If state <span class="math inline">\(2\)</span> is observed instead, the same column dictates action <span class="math inline">\(3\)</span>. (Note that, consistent with our definition of an action set, an entry in <code>policy</code> ought to be interpreted as the <em>position</em> of an action in the relevant action set. In particular, the two <span class="math inline">\(2\)</span>’s under column one do not necessarily denote the same action: the top <span class="math inline">\(2\)</span> refers to the <em>second action available</em> in state <span class="math inline">\(1\)</span>, whereas the bottom <span class="math inline">\(2\)</span> refers to the second action available in state <span class="math inline">\(2\)</span>.)</p>
-<p>Because they are stationary, pure policies can simply be encoded in vectors recording the action prescribed for each state. For example, the code below shows the construction of a pure policy that prescribes action <span class="math inline">\(2\)</span> for state <span class="math inline">\(1\)</span> and action <span class="math inline">\(2\)</span> for state <span class="math inline">\(2\)</span>.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>no_states &lt;-<span class="st"> </span><span class="dv">2</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a><span class="co"># The action set for state 1 is {1, 2}; for state 2 it is {1, 2, 3}</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a>action_sets &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a>policy &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">sample</span>(action_sets[[<span class="dv">1</span>]], <span class="dt">size =</span> <span class="dv">1</span>), <span class="kw">sample</span>(action_sets[[<span class="dv">2</span>]], <span class="dt">size =</span> <span class="dv">1</span>))</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a>policy</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a><span class="co">#&gt; [1] 2 2</span></span></code></pre></div>
-<p>The helper functions <code>is_valid_finite_horizon_policy()</code> and <code>is_valid_infinite_horizon_policy()</code> assess matrices and vectors for suitability as policy representations. They take the reward list of the model under study (from which the states, the actions and the horizon are inferred) and determine if the matrix/vector passed comports with the model.</p>
+<p>Whether the horizon is finite or infinite, we assume that the
+decision maker is always permitted exact observation of the state of the
+system before determining an appropriate action. <em>Decision rules</em>
+generally connote prescriptions for action selection viewed as mappings
+from states to actions. Such rules are called <em>Markov</em> because
+they depend only on the state in which the action is executed and
+<em>deterministic</em> because they specify actions with certainty <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
+<p>A policy is a sequence of decision rules dictating the rule to be
+used at each epoch. We might think of a policy as a sequence <span class="math inline">\(\pi = (d_1, \dots, d_{H-1})\)</span> or <span class="math inline">\(\pi = (d_1, d_2, \dots)\)</span>, the latter form
+being appropriate for infinite-horizon problems, where <span class="math inline">\(d_t\)</span> is the rule to apply at epoch <span class="math inline">\(t\)</span>. A policy is <em>stationary</em> if it
+uniformly recommends the same rule, and a stationary policy is said to
+be <em>pure</em> if the rule it prescribes is Markov deterministic. Pure
+policies figure prominently in the study of infinite-horizon MMDPs.</p>
+<p>In multiobjectiveMDP, finite-horizon (Markov deterministic) policies
+are encoded in integer matrices where the <span class="math inline">\((s, t)\)</span>-th entry gives the action <span class="math inline">\(d_t(s)\)</span> recommended for state <span class="math inline">\(s\)</span> at time <span class="math inline">\(t\)</span>. Consider the following example from a
+two-state, five-period model that provides two actions for state <span class="math inline">\(1\)</span> and three for state <span class="math inline">\(2\)</span>.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>no_states <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="co"># The action set for state 1 is {1, 2}; for state 2 it is {1, 2, 3}</span></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>action_sets <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>horizon <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>policy <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="fu">c</span>(<span class="fu">sample</span>(action_sets[[<span class="dv">1</span>]], <span class="at">size =</span> horizon<span class="dv">-1</span>, <span class="at">replace =</span> T), <span class="fu">sample</span>(action_sets[[<span class="dv">2</span>]], <span class="at">size =</span> horizon<span class="dv">-1</span>, <span class="at">replace =</span> T)), <span class="at">nrow =</span> no_states, <span class="at">ncol =</span> horizon<span class="dv">-1</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a>policy</span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3] [,4]</span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co">#&gt; [1,]    2    2    1    1</span></span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="co">#&gt; [2,]    2    2    3    1</span></span></code></pre></div>
+<p>Each of the four columns of <code>policy</code> describes the
+decision rule to apply at the corresponding epoch. For instance, if the
+system occupies state <span class="math inline">\(1\)</span> at epoch
+<span class="math inline">\(3\)</span>, column three says we must take
+action <span class="math inline">\(1\)</span>. If state <span class="math inline">\(2\)</span> is observed instead, the same column
+dictates action <span class="math inline">\(3\)</span>. (Note that,
+consistent with our definition of an action set, an entry in
+<code>policy</code> ought to be interpreted as the <em>position</em> of
+an action in the relevant action set. In particular, the two <span class="math inline">\(2\)</span>’s under column one do not necessarily
+denote the same action: the top <span class="math inline">\(2\)</span>
+refers to the <em>second action available</em> in state <span class="math inline">\(1\)</span>, whereas the bottom <span class="math inline">\(2\)</span> refers to the second action available
+in state <span class="math inline">\(2\)</span>.)</p>
+<p>Because they are stationary, pure policies can simply be encoded in
+vectors recording the action prescribed for each state. For example, the
+code below shows the construction of a pure policy that prescribes
+action <span class="math inline">\(2\)</span> for state <span class="math inline">\(1\)</span> and action <span class="math inline">\(2\)</span> for state <span class="math inline">\(2\)</span>.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>no_states <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="co"># The action set for state 1 is {1, 2}; for state 2 it is {1, 2, 3}</span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>action_sets <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>policy <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">sample</span>(action_sets[[<span class="dv">1</span>]], <span class="at">size =</span> <span class="dv">1</span>), <span class="fu">sample</span>(action_sets[[<span class="dv">2</span>]], <span class="at">size =</span> <span class="dv">1</span>))</span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>policy</span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="co">#&gt; [1] 2 2</span></span></code></pre></div>
+<p>The helper functions <code>is_valid_finite_horizon_policy()</code>
+and <code>is_valid_infinite_horizon_policy()</code> assess matrices and
+vectors for suitability as policy representations. They take the reward
+list of the model under study (from which the states, the actions and
+the horizon are inferred) and determine if the matrix/vector passed
+comports with the model.</p>
 </div>
 <div id="value-functions-and-preference-patterns" class="section level3">
 <h3>Value functions and preference patterns</h3>
-<p>Given multiple policy alternatives, we will wish to assess their relative merits and deficiencies in order that we may select a satisfactory policy for implementation. This presupposes a method of evaluating policies. A natural way of viewing the performance of a policy is through the sum of rewards that accumulate during the lifetime of the process as a result of implementing the policy. Because of the inherent uncertainty in the dynamics of an MMDP (and possibly in the policy itself, if we allowed action randomization), we cannot know these rewards ahead of implementation, and so we must treat them as random variables. Let <span class="math inline">\(\pi\)</span> denote some Markov deterministic policy, limiting ourselves for the moment to finite-horizon situations. The <em>expected total reward</em> that accrues under <span class="math inline">\(\pi\)</span> if the system initially occupies state <span class="math inline">\(s\)</span> can be defined as <span class="math display">\[ v_H^{\pi}(s) = \mathbb{E}_{s}^{\pi}\Biggl[\sum_{t = 1}^{H-1}R_t(S_t, d_t(S_t)) + R_H(S_H)\Biggr], \]</span><br />
-where <span class="math inline">\(S_t\)</span> denotes the random state at time <span class="math inline">\(t = 1, \dots, H\)</span>, <span class="math inline">\(d_t(S_t)\)</span> the action prescribed for state <span class="math inline">\(S_t\)</span>, and <span class="math inline">\(\mathbb{E}_{s}^{\pi}[W]\)</span> the vector of expectations, with respect to the probability distribution of system state-action trajectories under <span class="math inline">\(\pi\)</span>, of the components of a vector-valued random variable <span class="math inline">\(W\)</span>, conditional on <span class="math inline">\(S_1 = s\)</span>.</p>
-<p>We might also wish to account for the time value of rewards, in which case a <em>discount factor</em> <span class="math inline">\(\rho\)</span>, ranging in <span class="math inline">\((0, 1)\)</span>, would be appropriate. We would then evaluate the <em>expected discounted total reward</em> for using policy <span class="math inline">\(\pi\)</span> from an initial state <span class="math inline">\(s\)</span> as</p>
-<p><span class="math display">\[ v_{H, \rho}^{\pi}(s) = \mathbb{E}_{s}^{\pi}\Biggl[\sum_{t = 1}^{H-1}\rho^{t-1}R_t(S_t, d_t(S_t)) + \rho^{H-1}R_H(S_H)\Biggr]. \]</span> multiobjectiveMDP offers in <code>evaluate_finite_horizon_MMDP_markov_policy()</code> a recursive method for calculating <span class="math inline">\(v_{H}^{\pi}(s)\)</span> and <span class="math inline">\(v_{H, \rho}^{\pi}(s)\)</span> for all states <span class="math inline">\(s\)</span>. An example of its use follows.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>no_states &lt;-<span class="st"> </span><span class="dv">2</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a>action_sets &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a>horizon &lt;-<span class="st"> </span><span class="dv">5</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true"></a>no_objectives &lt;-<span class="st"> </span><span class="dv">2</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true"></a><span class="co"># Generate a two-state bi-objective MDP with the specified action sets and horizon</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true"></a>MMDP &lt;-<span class="st"> </span><span class="kw">generate_rand_MMDP</span>(no_states, action_sets, horizon, no_objectives)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true"></a>transition_probabilities &lt;-<span class="st"> </span>MMDP<span class="op">$</span>P</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true"></a>rewards &lt;-<span class="st"> </span>MMDP<span class="op">$</span>R</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true"></a></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true"></a>policy &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">data =</span> <span class="kw">c</span>(<span class="kw">sample</span>(action_sets[[<span class="dv">1</span>]], <span class="dt">size =</span> horizon<span class="dv">-1</span>, <span class="dt">replace =</span> T),</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true"></a>                          <span class="kw">sample</span>(action_sets[[<span class="dv">2</span>]], <span class="dt">size =</span> horizon<span class="dv">-1</span>, <span class="dt">replace =</span> T)),</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true"></a>                 <span class="dt">nrow =</span> no_states, <span class="dt">ncol =</span> horizon<span class="dv">-1</span>)</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true"></a>policy</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true"></a><span class="co">#&gt;      [,1] [,2] [,3] [,4]</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true"></a><span class="co">#&gt; [1,]    2    1    2    1</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true"></a><span class="co">#&gt; [2,]    2    2    2    3</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true"></a></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true"></a><span class="co"># Evaluate the expected total reward of policy over the five epochs</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true"></a><span class="kw">evaluate_finite_horizon_MMDP_markov_policy</span>(transition_probabilities, rewards, policy)</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true"></a><span class="co">#&gt;              State 1  State 2</span></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true"></a><span class="co">#&gt; Objective 1 3.396027 4.451076</span></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true"></a><span class="co">#&gt; Objective 2 3.139607 2.308909</span></span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true"></a></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true"></a><span class="co"># What if a discount factor of 70% is applied at each epoch? </span></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true"></a>rho &lt;-<span class="st"> </span><span class="fl">.7</span></span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true"></a><span class="kw">evaluate_finite_horizon_MMDP_markov_policy</span>(transition_probabilities, rewards, policy, rho)</span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true"></a><span class="co">#&gt;              State 1  State 2</span></span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true"></a><span class="co">#&gt; Objective 1 1.983252 3.013617</span></span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true"></a><span class="co">#&gt; Objective 2 1.516517 0.948372</span></span></code></pre></div>
-<p>When the horizon is infinite, discounting plays a useful mathematical role in that it ensures that the expected discounted total reward of a policy <span class="math inline">\(\pi\)</span>, <span class="math display">\[ v_{\rho}^{\pi}(s) = \mathbb{E}_{s}^{\pi}\Biggl[\sum_{t = 1}^{\infty}\rho^{t-1}R(S_t, d_t(S_t))\Biggr], \]</span> is finite whatever the starting state <span class="math inline">\(s\)</span>. The package function <code>evaluate_discounted_MMDP_pure_policy()</code> serves to evaluate pure policies in infinite-horizon problems.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>no_states &lt;-<span class="st"> </span><span class="dv">2</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a>action_sets &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a>no_objectives &lt;-<span class="st"> </span><span class="dv">2</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a><span class="co"># Generate an infinite-horizon two-state bi-objective MDP providing two actions per state</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a>stationary_MMDP &lt;-<span class="st"> </span><span class="kw">generate_rand_MMDP</span>(no_states, action_sets, <span class="dt">horizon =</span> <span class="ot">Inf</span>, no_objectives)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true"></a><span class="co"># Consider the pure policy that recommends action 2 for state 1 and action 1 for state 2</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true"></a>policy &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true"></a><span class="co"># Evaluate the policy in the infinite-horizon model generated above for rho = .7</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true"></a><span class="kw">evaluate_discounted_MMDP_pure_policy</span>(stationary_MMDP<span class="op">$</span>P, stationary_MMDP<span class="op">$</span>R, policy, <span class="dt">rho =</span> <span class="fl">.7</span>)</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true"></a><span class="co">#&gt;              State 1  State 2</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true"></a><span class="co">#&gt; Objective 1 3.328339 4.650054</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true"></a><span class="co">#&gt; Objective 2 1.442607 3.186737</span></span></code></pre></div>
-<p>Finally, applications abound where the state of the system at the beginning of the decision making period is subject to uncertainty, and we may wish to assess a policy against a distribution of initial states rather than a single initial state. If <span class="math inline">\(\alpha(s)\)</span> denotes the probability that the process will occupy a state <span class="math inline">\(s\)</span> at the first decision epoch, then <em>the expected total reward of a policy <span class="math inline">\(\pi\)</span> under the initial-state distribution <span class="math inline">\(\alpha\)</span></em> is</p>
-<p><span class="math display">\[\sum_{s = 1}^{N}\alpha(s)v_{H}^{\pi}(s) = \sum_{s = 1}^{N}\alpha(s)\mathbb{E}_{s}^{\pi}\Biggl[\sum_{t = 1}^{H-1}R_t(S_t, d_t(S_t)) + R_H(S_H)\Biggr]\]</span> if the horizon is finite, and</p>
-<p><span class="math display">\[\sum_{s = 1}^{N}\alpha(s)v_{\rho}^{\pi}(s) = \sum_{s = 1}^{N}\alpha(s)\mathbb{E}_{s}^{\pi}\Biggl[\sum_{t = 1}^{\infty}\rho^{t-1}R(S_t, d_t(S_t))\Biggr]\]</span> if decisions are made over an infinity of epochs.</p>
-<p>To be able to compare policies on the basis of expected (discounted) total rewards, we must assume a preference pattern on the part of the decision maker, viz. a set of rules for comparing value vectors. The pattern implicit in multiobjectiveMDP is a maximization pattern in which larger values in each objective are preferable to smaller values. Thus, if <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> represent <span class="math inline">\(k\)</span>-dimensional value vectors (e.g., expected total rewards over a finite horizon) achieved by two competing policies <span class="math inline">\(\pi\)</span> and <span class="math inline">\(\pi&#39;\)</span>, we would deem <span class="math inline">\(\pi\)</span> to be at least as good as <span class="math inline">\(\pi&#39;\)</span> if <span class="math inline">\(x_i \geq y_i\)</span> for each <span class="math inline">\(i = 1, \dots, k\)</span>, and we would correspondingly prefer <span class="math inline">\(\pi\)</span> to <span class="math inline">\(\pi&#39;\)</span> if, in addition to these inequalities holding, at least one objective <span class="math inline">\(i\)</span> satisfied <span class="math inline">\(x_i &gt; y_i\)</span>. If neither policy is at least as good as the other, we would say <span class="math inline">\(\pi\)</span> and <span class="math inline">\(\pi&#39;\)</span> are incomparable.</p>
-<p>From this discussion it follows that the decision maker’s choice of policy ought to be an <em>efficient</em> (or Pareto optimal, or admissible) one, meaning a policy in which an increase in value of any objective cannot be achieved without a corresponding decrease in the value of at least one other objective. When we rely upon <span class="math inline">\(v_{H}^{\pi}(s), v_{H, \rho}^{\pi}(s)\)</span> or <span class="math inline">\(v_{\rho}^{\pi}(s)\)</span> for policy evaluation, we might run into policies that are efficient whatever the initial state of the system. These we call <em>uniformly</em> efficient.</p>
-<p>(Incidentally, this maximization pattern subsumes a wider array of problems than appears at first glance. If, to take a typical example, there is a criterion for which less is preferable to more (a cost, say), then the corresponding reward function would be defined as its negative, and the pattern would be appropriate. <span class="citation">Soland (1979)</span> cites temperature and sugar content as exemplifying another familiar set of criteria for which “an ideal value exists, and desirability decreases monotonically on both sides of this value”. He adumbrates a procedure for transforming such criteria so that they become amenable to analysis in a maximization framework. For values above the ideal, the new criterion would be set equal to the ideal value minus the actual value as provided by the original criterion. For values below the ideal, “a positive transformation of the difference must be determined so that each value below the ideal one receives a (negative) criterion score [as given by the new criterion] equal to that of a value above the ideal that is equally desirable.”)</p>
-<p>multiobjectiveMDP compiles some of the best known techniques for calculating the efficient values and policies of finite-horizon and discounted infinite-horizon MMDPs.</p>
+<p>Given multiple policy alternatives, we will wish to assess their
+relative merits and deficiencies in order that we may select a
+satisfactory policy for implementation. This presupposes a method of
+evaluating policies. A natural way of viewing the performance of a
+policy is through the sum of rewards that accumulate during the lifetime
+of the process as a result of implementing the policy. Because of the
+inherent uncertainty in the dynamics of an MMDP (and possibly in the
+policy itself, if we allowed action randomization), we cannot know these
+rewards ahead of implementation, and so we must treat them as random
+variables. Let <span class="math inline">\(\pi\)</span> denote some
+Markov deterministic policy, limiting ourselves for the moment to
+finite-horizon situations. The <em>expected total reward</em> that
+accrues under <span class="math inline">\(\pi\)</span> if the system
+initially occupies state <span class="math inline">\(s\)</span> can be
+defined as <span class="math display">\[ v_H^{\pi}(s) =
+\mathbb{E}_{s}^{\pi}\Biggl[\sum_{t = 1}^{H-1}R_t(S_t, d_t(S_t)) +
+R_H(S_H)\Biggr], \]</span><br />
+where <span class="math inline">\(S_t\)</span> denotes the random state
+at time <span class="math inline">\(t = 1, \dots, H\)</span>, <span class="math inline">\(d_t(S_t)\)</span> the action prescribed for state
+<span class="math inline">\(S_t\)</span>, and <span class="math inline">\(\mathbb{E}_{s}^{\pi}[W]\)</span> the vector of
+expectations, with respect to the probability distribution of system
+state-action trajectories under <span class="math inline">\(\pi\)</span>, of the components of a vector-valued
+random variable <span class="math inline">\(W\)</span>, conditional on
+<span class="math inline">\(S_1 = s\)</span>.</p>
+<p>We might also wish to account for the time value of rewards, in which
+case a <em>discount factor</em> <span class="math inline">\(\rho\)</span>, ranging in <span class="math inline">\((0, 1)\)</span>, would be appropriate. We would
+then evaluate the <em>expected discounted total reward</em> for using
+policy <span class="math inline">\(\pi\)</span> from an initial state
+<span class="math inline">\(s\)</span> as</p>
+<p><span class="math display">\[ v_{H, \rho}^{\pi}(s) =
+\mathbb{E}_{s}^{\pi}\Biggl[\sum_{t = 1}^{H-1}\rho^{t-1}R_t(S_t,
+d_t(S_t)) + \rho^{H-1}R_H(S_H)\Biggr]. \]</span> multiobjectiveMDP
+offers in <code>evaluate_finite_horizon_MMDP_markov_policy()</code> a
+recursive method for calculating <span class="math inline">\(v_{H}^{\pi}(s)\)</span> and <span class="math inline">\(v_{H, \rho}^{\pi}(s)\)</span> for all states <span class="math inline">\(s\)</span>. An example of its use follows.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>no_states <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>action_sets <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>horizon <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>no_objectives <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="co"># Generate a two-state bi-objective MDP with the specified action sets and horizon</span></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>MMDP <span class="ot">&lt;-</span> <span class="fu">generate_rand_MMDP</span>(no_states, action_sets, horizon, no_objectives)</span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>transition_probabilities <span class="ot">&lt;-</span> MMDP<span class="sc">$</span>P</span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a>rewards <span class="ot">&lt;-</span> MMDP<span class="sc">$</span>R</span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a>policy <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="fu">c</span>(<span class="fu">sample</span>(action_sets[[<span class="dv">1</span>]], <span class="at">size =</span> horizon<span class="dv">-1</span>, <span class="at">replace =</span> T),</span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a>                          <span class="fu">sample</span>(action_sets[[<span class="dv">2</span>]], <span class="at">size =</span> horizon<span class="dv">-1</span>, <span class="at">replace =</span> T)),</span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a>                 <span class="at">nrow =</span> no_states, <span class="at">ncol =</span> horizon<span class="dv">-1</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a>policy</span>
+<span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3] [,4]</span></span>
+<span id="cb6-16"><a href="#cb6-16" tabindex="-1"></a><span class="co">#&gt; [1,]    2    1    2    1</span></span>
+<span id="cb6-17"><a href="#cb6-17" tabindex="-1"></a><span class="co">#&gt; [2,]    2    2    2    3</span></span>
+<span id="cb6-18"><a href="#cb6-18" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" tabindex="-1"></a><span class="co"># Evaluate the expected total reward of policy over the five epochs</span></span>
+<span id="cb6-20"><a href="#cb6-20" tabindex="-1"></a><span class="fu">evaluate_finite_horizon_MMDP_markov_policy</span>(transition_probabilities, rewards, policy)</span>
+<span id="cb6-21"><a href="#cb6-21" tabindex="-1"></a><span class="co">#&gt;              State 1  State 2</span></span>
+<span id="cb6-22"><a href="#cb6-22" tabindex="-1"></a><span class="co">#&gt; Objective 1 3.396027 4.451076</span></span>
+<span id="cb6-23"><a href="#cb6-23" tabindex="-1"></a><span class="co">#&gt; Objective 2 3.139607 2.308909</span></span>
+<span id="cb6-24"><a href="#cb6-24" tabindex="-1"></a></span>
+<span id="cb6-25"><a href="#cb6-25" tabindex="-1"></a><span class="co"># What if a discount factor of 70% is applied at each epoch? </span></span>
+<span id="cb6-26"><a href="#cb6-26" tabindex="-1"></a>rho <span class="ot">&lt;-</span> .<span class="dv">7</span></span>
+<span id="cb6-27"><a href="#cb6-27" tabindex="-1"></a><span class="fu">evaluate_finite_horizon_MMDP_markov_policy</span>(transition_probabilities, rewards, policy, rho)</span>
+<span id="cb6-28"><a href="#cb6-28" tabindex="-1"></a><span class="co">#&gt;              State 1  State 2</span></span>
+<span id="cb6-29"><a href="#cb6-29" tabindex="-1"></a><span class="co">#&gt; Objective 1 1.983252 3.013617</span></span>
+<span id="cb6-30"><a href="#cb6-30" tabindex="-1"></a><span class="co">#&gt; Objective 2 1.516517 0.948372</span></span></code></pre></div>
+<p>When the horizon is infinite, discounting plays a useful mathematical
+role in that it ensures that the expected discounted total reward of a
+policy <span class="math inline">\(\pi\)</span>, <span class="math display">\[ v_{\rho}^{\pi}(s) =
+\mathbb{E}_{s}^{\pi}\Biggl[\sum_{t = 1}^{\infty}\rho^{t-1}R(S_t,
+d_t(S_t))\Biggr], \]</span> is finite whatever the starting state <span class="math inline">\(s\)</span>. The package function
+<code>evaluate_discounted_MMDP_pure_policy()</code> serves to evaluate
+pure policies in infinite-horizon problems.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>no_states <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>action_sets <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>no_objectives <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="co"># Generate an infinite-horizon two-state bi-objective MDP providing two actions per state</span></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>stationary_MMDP <span class="ot">&lt;-</span> <span class="fu">generate_rand_MMDP</span>(no_states, action_sets, <span class="at">horizon =</span> <span class="cn">Inf</span>, no_objectives)</span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="co"># Consider the pure policy that recommends action 2 for state 1 and action 1 for state 2</span></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a>policy <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="co"># Evaluate the policy in the infinite-horizon model generated above for rho = .7</span></span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="fu">evaluate_discounted_MMDP_pure_policy</span>(stationary_MMDP<span class="sc">$</span>P, stationary_MMDP<span class="sc">$</span>R, policy, <span class="at">rho =</span> .<span class="dv">7</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="co">#&gt;              State 1  State 2</span></span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a><span class="co">#&gt; Objective 1 3.328339 4.650054</span></span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a><span class="co">#&gt; Objective 2 1.442607 3.186737</span></span></code></pre></div>
+<p>Finally, applications abound where the state of the system at the
+beginning of the decision making period is subject to uncertainty, and
+we may wish to assess a policy against a distribution of initial states
+rather than a single initial state. If <span class="math inline">\(\alpha(s)\)</span> denotes the probability that
+the process will occupy a state <span class="math inline">\(s\)</span>
+at the first decision epoch, then <em>the expected total reward of a
+policy <span class="math inline">\(\pi\)</span> under the initial-state
+distribution <span class="math inline">\(\alpha\)</span></em> is</p>
+<p><span class="math display">\[\sum_{s = 1}^{N}\alpha(s)v_{H}^{\pi}(s)
+= \sum_{s = 1}^{N}\alpha(s)\mathbb{E}_{s}^{\pi}\Biggl[\sum_{t =
+1}^{H-1}R_t(S_t, d_t(S_t)) + R_H(S_H)\Biggr]\]</span> if the horizon is
+finite, and</p>
+<p><span class="math display">\[\sum_{s =
+1}^{N}\alpha(s)v_{\rho}^{\pi}(s) = \sum_{s =
+1}^{N}\alpha(s)\mathbb{E}_{s}^{\pi}\Biggl[\sum_{t =
+1}^{\infty}\rho^{t-1}R(S_t, d_t(S_t))\Biggr]\]</span> if decisions are
+made over an infinity of epochs.</p>
+<p>To be able to compare policies on the basis of expected (discounted)
+total rewards, we must assume a preference pattern on the part of the
+decision maker, viz. a set of rules for comparing value vectors. The
+pattern implicit in multiobjectiveMDP is a maximization pattern in which
+larger values in each objective are preferable to smaller values. Thus,
+if <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> represent <span class="math inline">\(k\)</span>-dimensional value vectors (e.g.,
+expected total rewards over a finite horizon) achieved by two competing
+policies <span class="math inline">\(\pi\)</span> and <span class="math inline">\(\pi&#39;\)</span>, we would deem <span class="math inline">\(\pi\)</span> to be at least as good as <span class="math inline">\(\pi&#39;\)</span> if <span class="math inline">\(x_i \geq y_i\)</span> for each <span class="math inline">\(i = 1, \dots, k\)</span>, and we would
+correspondingly prefer <span class="math inline">\(\pi\)</span> to <span class="math inline">\(\pi&#39;\)</span> if, in addition to these
+inequalities holding, at least one objective <span class="math inline">\(i\)</span> satisfied <span class="math inline">\(x_i &gt; y_i\)</span>. If neither policy is at
+least as good as the other, we would say <span class="math inline">\(\pi\)</span> and <span class="math inline">\(\pi&#39;\)</span> are incomparable.</p>
+<p>From this discussion it follows that the decision maker’s choice of
+policy ought to be an <em>efficient</em> (or Pareto optimal, or
+admissible) one, meaning a policy in which an increase in value of any
+objective cannot be achieved without a corresponding decrease in the
+value of at least one other objective. When we rely upon <span class="math inline">\(v_{H}^{\pi}(s), v_{H, \rho}^{\pi}(s)\)</span> or
+<span class="math inline">\(v_{\rho}^{\pi}(s)\)</span> for policy
+evaluation, we might run into policies that are efficient whatever the
+initial state of the system. These we call <em>uniformly</em>
+efficient.</p>
+<p>(Incidentally, this maximization pattern subsumes a wider array of
+problems than appears at first glance. If, to take a typical example,
+there is a criterion for which less is preferable to more (a cost, say),
+then the corresponding reward function would be defined as its negative,
+and the pattern would be appropriate. <span class="citation">Soland
+(1979)</span> cites temperature and sugar content as exemplifying
+another familiar set of criteria for which “an ideal value exists, and
+desirability decreases monotonically on both sides of this value”. He
+adumbrates a procedure for transforming such criteria so that they
+become amenable to analysis in a maximization framework. For values
+above the ideal, the new criterion would be set equal to the ideal value
+minus the actual value as provided by the original criterion. For values
+below the ideal, “a positive transformation of the difference must be
+determined so that each value below the ideal one receives a (negative)
+criterion score [as given by the new criterion] equal to that of a value
+above the ideal that is equally desirable.”)</p>
+<p>multiobjectiveMDP compiles some of the best known techniques for
+calculating the efficient values and policies of finite-horizon and
+discounted infinite-horizon MMDPs.</p>
 <ul>
-<li><code>solve_finite_horizon_MMDP_backward_induction()</code> applies the dynamic programming procedure described in <span class="citation">Mifrani (2025)</span> for finding the efficient expected total reward vectors (with or without discount) achieved in a finite-horizon MMDP;</li>
-<li><code>solve_finite_horizon_MMDP_weighting_factor()</code> generates uniformly efficient policies for a discounted or undiscounted finite-horizon MMDP through the weighting factor approach;</li>
-<li><code>solve_finite_horizon_MMDP_linear_programming()</code> implements Mifrani and Noll’s (2025) linear programming technique for enumerating the efficient Markov deterministic policies of a finite-horizon MMDP subject to an initial-state distribution;</li>
-<li><code>solve_discounted_MMDP_policy_iteration()</code> determines the uniformly efficient pure policies of an infinite-horizon MMDP by Wakuta’s (1992) policy iteration method;</li>
-<li><code>solve_discounted_MMDP_weighting_factor()</code> locates uniformly efficient pure policies for an infinite-horizon MMDP via the weighting factor approach; and</li>
-<li><code>solve_discounted_MMDP_linear_programming()</code> adapts Mifrani and Noll’s (2025) linear programming technique to the problem of enumerating the efficient pure policies of an infinite-horizon MMDP characterized by an initial-state distribution.</li>
+<li><code>solve_finite_horizon_MMDP_backward_induction()</code> applies
+the dynamic programming procedure described in <span class="citation">Mifrani (2025)</span> for finding the efficient
+expected total reward vectors (with or without discount) achieved in a
+finite-horizon MMDP;</li>
+<li><code>solve_finite_horizon_MMDP_weighting_factor()</code> generates
+uniformly efficient policies for a discounted or undiscounted
+finite-horizon MMDP through the weighting factor approach;</li>
+<li><code>solve_finite_horizon_MMDP_linear_programming()</code>
+implements Mifrani and Noll’s (2025) linear programming technique for
+enumerating the efficient Markov deterministic policies of a
+finite-horizon MMDP subject to an initial-state distribution;</li>
+<li><code>solve_discounted_MMDP_policy_iteration()</code> determines the
+uniformly efficient pure policies of an infinite-horizon MMDP by
+Wakuta’s (1992) policy iteration method;</li>
+<li><code>solve_discounted_MMDP_weighting_factor()</code> locates
+uniformly efficient pure policies for an infinite-horizon MMDP via the
+weighting factor approach; and</li>
+<li><code>solve_discounted_MMDP_linear_programming()</code> adapts
+Mifrani and Noll’s (2025) linear programming technique to the problem of
+enumerating the efficient pure policies of an infinite-horizon MMDP
+characterized by an initial-state distribution.</li>
 </ul>
 </div>
 </div>
 <div id="an-example" class="section level2">
 <h2>An example</h2>
-<p>MMDP theory assures us that an infinite-horizon problem with finite states and actions will admit at least one uniformly efficient pure policy. Wakuta’s policy iteration method identifies such policies by testing carefully selected candidates against a set of necessary and sufficient conditions for efficiency. We can run the method by calling <code>solve_discounted_MMDP_policy_iteration()</code>.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a><span class="co"># Set up a bi-objective infinite-horizon MMDP</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a>no_states &lt;-<span class="st"> </span><span class="dv">2</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a>action_sets &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a>no_objectives &lt;-<span class="st"> </span><span class="dv">2</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a>stationary_MMDP &lt;-<span class="st"> </span><span class="kw">generate_rand_MMDP</span>(no_states, action_sets, <span class="dt">horizon =</span> <span class="ot">Inf</span>, no_objectives)</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true"></a>stationary_transition_probabilities &lt;-<span class="st"> </span>stationary_MMDP<span class="op">$</span>P</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true"></a>stationary_rewards &lt;-<span class="st"> </span>stationary_MMDP<span class="op">$</span>R</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true"></a>rho &lt;-<span class="st"> </span><span class="fl">.7</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true"></a></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true"></a><span class="co"># Use policy iteration to locate the efficient pure policies</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true"></a>solution &lt;-<span class="st"> </span><span class="kw">solve_discounted_MMDP_policy_iteration</span>(stationary_transition_probabilities, stationary_rewards, rho)</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true"></a><span class="co">#&gt; Number of efficient pure policies found through policy iteration: 3</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true"></a>solution<span class="op">$</span>policies</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true"></a><span class="co">#&gt;          State 1 State 2</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true"></a><span class="co">#&gt; Policy 1       1       1</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true"></a><span class="co">#&gt; Policy 2       2       1</span></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true"></a><span class="co">#&gt; Policy 3       2       2</span></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true"></a></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true"></a><span class="co"># Inspect their expected discounted total rewards</span></span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true"></a>solution<span class="op">$</span>value_functions</span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true"></a><span class="co">#&gt;               State 1  State 2</span></span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true"></a><span class="co">#&gt; Objective 1 0.5596852 3.126684</span></span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true"></a><span class="co">#&gt; Objective 2 5.7670637 5.566142</span></span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true"></a><span class="co">#&gt;              State 1  State 2</span></span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true"></a><span class="co">#&gt; Objective 1 3.328339 4.650054</span></span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true"></a><span class="co">#&gt; Objective 2 1.442607 3.186737</span></span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true"></a><span class="co">#&gt; [[3]]</span></span>
-<span id="cb8-33"><a href="#cb8-33" aria-hidden="true"></a><span class="co">#&gt;               State 1   State 2</span></span>
-<span id="cb8-34"><a href="#cb8-34" aria-hidden="true"></a><span class="co">#&gt; Objective 1 3.3477422 4.7135673</span></span>
-<span id="cb8-35"><a href="#cb8-35" aria-hidden="true"></a><span class="co">#&gt; Objective 2 0.5645869 0.3126881</span></span></code></pre></div>
+<p>MMDP theory assures us that an infinite-horizon problem with finite
+states and actions will admit at least one uniformly efficient pure
+policy. Wakuta’s policy iteration method identifies such policies by
+testing carefully selected candidates against a set of necessary and
+sufficient conditions for efficiency. We can run the method by calling
+<code>solve_discounted_MMDP_policy_iteration()</code>.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="co"># Set up a bi-objective infinite-horizon MMDP</span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>no_states <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>action_sets <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>no_objectives <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>stationary_MMDP <span class="ot">&lt;-</span> <span class="fu">generate_rand_MMDP</span>(no_states, action_sets, <span class="at">horizon =</span> <span class="cn">Inf</span>, no_objectives)</span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>stationary_transition_probabilities <span class="ot">&lt;-</span> stationary_MMDP<span class="sc">$</span>P</span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a>stationary_rewards <span class="ot">&lt;-</span> stationary_MMDP<span class="sc">$</span>R</span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a>rho <span class="ot">&lt;-</span> .<span class="dv">7</span></span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="co"># Use policy iteration to locate the efficient pure policies</span></span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a>solution <span class="ot">&lt;-</span> <span class="fu">solve_discounted_MMDP_policy_iteration</span>(stationary_transition_probabilities, stationary_rewards, rho)</span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="co">#&gt; Number of efficient pure policies found through policy iteration: 3</span></span>
+<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a>solution<span class="sc">$</span>policies</span>
+<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a><span class="co">#&gt;          State 1 State 2</span></span>
+<span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a><span class="co">#&gt; Policy 1       1       1</span></span>
+<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a><span class="co">#&gt; Policy 2       2       1</span></span>
+<span id="cb8-18"><a href="#cb8-18" tabindex="-1"></a><span class="co">#&gt; Policy 3       2       2</span></span>
+<span id="cb8-19"><a href="#cb8-19" tabindex="-1"></a></span>
+<span id="cb8-20"><a href="#cb8-20" tabindex="-1"></a><span class="co"># Inspect their expected discounted total rewards</span></span>
+<span id="cb8-21"><a href="#cb8-21" tabindex="-1"></a>solution<span class="sc">$</span>value_functions</span>
+<span id="cb8-22"><a href="#cb8-22" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb8-23"><a href="#cb8-23" tabindex="-1"></a><span class="co">#&gt;               State 1  State 2</span></span>
+<span id="cb8-24"><a href="#cb8-24" tabindex="-1"></a><span class="co">#&gt; Objective 1 0.5596852 3.126684</span></span>
+<span id="cb8-25"><a href="#cb8-25" tabindex="-1"></a><span class="co">#&gt; Objective 2 5.7670637 5.566142</span></span>
+<span id="cb8-26"><a href="#cb8-26" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-27"><a href="#cb8-27" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb8-28"><a href="#cb8-28" tabindex="-1"></a><span class="co">#&gt;              State 1  State 2</span></span>
+<span id="cb8-29"><a href="#cb8-29" tabindex="-1"></a><span class="co">#&gt; Objective 1 3.328339 4.650054</span></span>
+<span id="cb8-30"><a href="#cb8-30" tabindex="-1"></a><span class="co">#&gt; Objective 2 1.442607 3.186737</span></span>
+<span id="cb8-31"><a href="#cb8-31" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-32"><a href="#cb8-32" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
+<span id="cb8-33"><a href="#cb8-33" tabindex="-1"></a><span class="co">#&gt;               State 1   State 2</span></span>
+<span id="cb8-34"><a href="#cb8-34" tabindex="-1"></a><span class="co">#&gt; Objective 1 3.3477422 4.7135673</span></span>
+<span id="cb8-35"><a href="#cb8-35" tabindex="-1"></a><span class="co">#&gt; Objective 2 0.5645869 0.3126881</span></span></code></pre></div>
 </div>
 <div id="references" class="section level2 unnumbered">
 <h2 class="unnumbered">References</h2>
-<div id="refs" class="references hanging-indent">
-<div id="ref-mifrani2025counterexample">
-<p>Mifrani, Anas. 2025. “A Counterexample and a Corrective to the Vector Extension of the Bellman Equations of a Markov Decision Process.” <em>Annals of Operations Research</em> 345 (1): 351–69.</p>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-mifrani2025counterexample" class="csl-entry">
+Mifrani, Anas. 2025. <span>“A Counterexample and a Corrective to the
+Vector Extension of the Bellman Equations of a Markov Decision
+Process.”</span> <em>Annals of Operations Research</em> 345 (1): 351–69.
 </div>
-<div id="ref-mifrani2025linear">
-<p>Mifrani, Anas, and Dominikus Noll. 2025. “Linear Programming for Finite-Horizon Vector-Valued Markov Decision Processes.” <em>arXiv Preprint arXiv:2502.13697</em>.</p>
+<div id="ref-mifrani2025linear" class="csl-entry">
+Mifrani, Anas, and Dominikus Noll. 2025. <span>“Linear Programming for
+Finite-Horizon Vector-Valued Markov Decision Processes.”</span>
+<em>arXiv Preprint arXiv:2502.13697</em>.
 </div>
-<div id="ref-soland1979multicriteria">
-<p>Soland, Richard M. 1979. “Multicriteria Optimization: A General Characterization of Efficient Solutions.” <em>Decision Sciences</em> 10 (1): 26–38.</p>
+<div id="ref-soland1979multicriteria" class="csl-entry">
+Soland, Richard M. 1979. <span>“Multicriteria Optimization: A General
+Characterization of Efficient Solutions.”</span> <em>Decision
+Sciences</em> 10 (1): 26–38.
 </div>
-<div id="ref-wakuta1995vector">
-<p>Wakuta, Kazuyoshi. 1995. “Vector-Valued Markov Decision Processes and the Systems of Linear Inequalities.” <em>Stochastic Processes and Their Applications</em> 56 (1): 159–69.</p>
+<div id="ref-wakuta1995vector" class="csl-entry">
+Wakuta, Kazuyoshi. 1995. <span>“Vector-Valued Markov Decision Processes
+and the Systems of Linear Inequalities.”</span> <em>Stochastic Processes
+and Their Applications</em> 56 (1): 159–69.
 </div>
-<div id="ref-white1982multi">
-<p>White, Douglas J. 1982. “Multi-Objective Infinite-Horizon Discounted Markov Decision Processes.” <em>Journal of Mathematical Analysis and Applications</em> 89 (2): 639–47.</p>
+<div id="ref-white1982multi" class="csl-entry">
+White, Douglas J. 1982. <span>“Multi-Objective Infinite-Horizon
+Discounted Markov Decision Processes.”</span> <em>Journal of
+Mathematical Analysis and Applications</em> 89 (2): 639–47.
 </div>
-<div id="ref-white1988mean">
-<p>———. 1988. “Mean, Variance, and Probabilistic Criteria in Finite Markov Decision Processes: A Review.” <em>Journal of Optimization Theory and Applications</em> 56 (1): 1–29.</p>
+<div id="ref-white1988mean" class="csl-entry">
+———. 1988. <span>“Mean, Variance, and Probabilistic Criteria in Finite
+Markov Decision Processes: A Review.”</span> <em>Journal of Optimization
+Theory and Applications</em> 56 (1): 1–29.
 </div>
 </div>
 </div>
-<div class="footnotes">
+<div class="footnotes footnotes-end-of-document">
 <hr />
 <ol>
-<li id="fn1"><p>The dynamic programming procedure of <code>solve_finite_horizon_MMDP_backward_induction()</code> compels consideration of certain non-Markov decision rules as well. To make this possible, we need to redefine rules as follows. If <span class="math inline">\(h_t = (s_1, \dots, s_t)\)</span> designates a sequence of states observed prior to and including epoch <span class="math inline">\(t\)</span>, then we construe a rule to mean a mapping of each such sequence to some action permissible in state <span class="math inline">\(s_t\)</span>. If the mapping ignores past states, we get a Markov deterministic rule.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn1"><p>The dynamic programming procedure of
+<code>solve_finite_horizon_MMDP_backward_induction()</code> compels
+consideration of certain non-Markov decision rules as well. To make this
+possible, we need to redefine rules as follows. If <span class="math inline">\(h_t = (s_1, \dots, s_t)\)</span> designates a
+sequence of states observed prior to and including epoch <span class="math inline">\(t\)</span>, then we construe a rule to mean a
+mapping of each such sequence to some action permissible in state <span class="math inline">\(s_t\)</span>. If the mapping ignores past states,
+we get a Markov deterministic rule.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 

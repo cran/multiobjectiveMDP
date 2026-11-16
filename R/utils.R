@@ -665,23 +665,30 @@ solve_MOLP <- function(C, A, b, max_iter) {
 
 
       if (length(R_2_bfs) == 0) {
+        # Ecker-Kouada Step 8: choose a basis in R_1 (which must lie in V_1).
         Tableau <- R_1_tableaus[[1]]
-        if (length(R_1_bfs) == n) {
-          V_2_bfs <- rbind(V_2_bfs, R_1_bfs)
+        pending_index <- which(vapply(
+          V_1_tableaus,
+          function(t) setequal(t[[2]], Tableau[[2]]),
+          logical(1)
+        ))
+        if (length(pending_index) != 1L) {
+          stop("Internal error: selected R_1 basis is not unique in V_1")
         }
-        else {
-          V_2_bfs <- rbind(V_2_bfs, R_1_bfs[1, ])
+
+        # Record the selected basis and its solution together.
+        V_2_bfs <- rbind(V_2_bfs, calculate_bfs_from_tableau(Tableau, n, m))
+        V_2_tableaus <- append(V_2_tableaus, list(Tableau))
+
+        # Remove this same basis, not the first (possibly different) pending basis.
+        if (is.null(dim(V_1_bfs))) {
+          V_1_bfs <- matrix(V_1_bfs, nrow = 1L)
         }
-        if (length(V_1_bfs) > n) {
-          V_1_bfs <- V_1_bfs[-1, ]
-        }
-        else if (length(V_1_bfs) == n) {
-          V_1_bfs <- NULL
-        }
-        V_1_tableaus <- V_1_tableaus[-1]
-        if (!is.null(V_1_bfs) && (length(V_1_bfs) > n)) { V_1_bfs <- as.matrix(V_1_bfs) }
+        V_1_bfs <- V_1_bfs[-pending_index, , drop = FALSE]
+        if (nrow(V_1_bfs) == 0L) V_1_bfs <- NULL
+        V_1_tableaus <- V_1_tableaus[-pending_index]
         next
-      } # If R_2 is empty, go to step 8
+      } # Ecker-Kouada Step 8
       # Otherwise, if R_2 isn't empty, go to step 6
       else {
         Tableau <- R_2_tableaus[[1]]
